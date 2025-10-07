@@ -278,13 +278,27 @@ class ImageCompressor {
         const card = document.createElement('div');
         card.className = 'card-unique';
         
-        const reductionPercent = Math.round(((image.originalSize - image.compressedSize) / image.originalSize) * 100);
+        const sizeDifference = image.originalSize - image.compressedSize;
+        const reductionPercent = Math.round((sizeDifference / image.originalSize) * 100);
+        
+        // Handle cases where compressed file is larger
+        let displayText, badgeClass;
+        if (reductionPercent > 0) {
+            displayText = `${reductionPercent}% Smaller`;
+            badgeClass = 'bg-gradient-to-r from-green-400 to-emerald-400';
+        } else if (reductionPercent < 0) {
+            displayText = `${Math.abs(reductionPercent)}% Larger`;
+            badgeClass = 'bg-gradient-to-r from-orange-400 to-red-400';
+        } else {
+            displayText = 'Same Size';
+            badgeClass = 'bg-gradient-to-r from-gray-400 to-gray-500';
+        }
         
         card.innerHTML = `
             <div class="relative">
                 <img src="${image.url}" alt="${image.originalName}" class="w-full h-48 object-cover">
-                <div class="absolute top-4 right-4 bg-gradient-to-r from-green-400 to-emerald-400 text-white px-4 py-2 rounded-full text-sm font-bold">
-                    ${reductionPercent}% Smaller
+                <div class="absolute top-4 right-4 ${badgeClass} text-white px-4 py-2 rounded-full text-sm font-bold">
+                    ${displayText}
                 </div>
             </div>
             <div class="p-6">
@@ -295,7 +309,7 @@ class ImageCompressor {
                     </div>
                     <div>
                         <div class="text-white/70 text-sm mb-1">Compressed</div>
-                        <div class="text-green-400 font-semibold">${this.formatFileSize(image.compressedSize)}</div>
+                        <div class="${reductionPercent > 0 ? 'text-green-400' : reductionPercent < 0 ? 'text-orange-400' : 'text-gray-400'} font-semibold">${this.formatFileSize(image.compressedSize)}</div>
                     </div>
                 </div>
                 <div class="grid grid-cols-2 gap-4 mb-6">

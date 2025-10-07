@@ -14,7 +14,7 @@ class ImageCompressor {
     // Analytics tracking functions
     trackPageView() {
         if (typeof gtag !== 'undefined') {
-            gtag('config', 'GA_MEASUREMENT_ID', {
+            gtag('config', 'G-LZ3449CZV0', {
                 page_title: 'Image Compressor',
                 page_location: window.location.href
             });

@@ -533,12 +533,44 @@ input[type="range"]::-moz-range-thumb {
 /* Ad Space Styling */
 .adsbygoogle {
     display: block !important;
-    min-height: 90px;
+    min-height: 250px;
+    width: 100%;
 }
 
 /* Hide empty ad containers until loaded */
 .glass-container:has(.adsbygoogle:empty) {
     display: none;
+}
+
+/* Ad container fallback styling */
+.glass-container .adsbygoogle {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Ensure ad container has proper dimensions */
+.glass-container {
+    min-height: 250px;
+    position: relative;
+}
+
+/* Ad loading state */
+.adsbygoogle:empty::before {
+    content: "Advertisement";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 /* Better spacing for sections */

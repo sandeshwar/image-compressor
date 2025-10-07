@@ -109,6 +109,60 @@ class ImageCompressor {
     showSettings() {
         document.getElementById('settingsSection').classList.remove('hidden');
         document.getElementById('settingsSection').style.animation = 'bounce-in 0.6s ease-out';
+        this.showImagePreviews();
+    }
+
+    showImagePreviews() {
+        const previewSection = document.getElementById('imagePreviewSection');
+        const thumbnailContainer = document.getElementById('thumbnailContainer');
+        
+        if (this.images.length > 0) {
+            previewSection.classList.remove('hidden');
+            previewSection.style.animation = 'slideInFromTop 0.4s ease-out';
+            
+            thumbnailContainer.innerHTML = '';
+            
+            this.images.forEach((image, index) => {
+                const thumbnail = this.createThumbnail(image, index);
+                thumbnailContainer.appendChild(thumbnail);
+            });
+        } else {
+            previewSection.classList.add('hidden');
+        }
+    }
+
+    createThumbnail(image, index) {
+        const thumbnail = document.createElement('div');
+        thumbnail.className = 'thumbnail-item';
+        
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            thumbnail.innerHTML = `
+                <img src="${e.target.result}" alt="${image.name}">
+                <div class="remove-btn" onclick="imageCompressor.removeImage(${index})">
+                    <i class="fas fa-times"></i>
+                </div>
+                <div class="file-info">
+                    <div class="truncate">${image.name}</div>
+                    <div class="text-xs opacity-80">${this.formatFileSize(image.size)}</div>
+                </div>
+            `;
+        };
+        reader.readAsDataURL(image);
+        
+        return thumbnail;
+    }
+
+    removeImage(index) {
+        this.images.splice(index, 1);
+        this.showImagePreviews();
+        
+        if (this.images.length === 0) {
+            document.getElementById('settingsSection').classList.add('hidden');
+            document.getElementById('resultsSection').classList.add('hidden');
+        }
+        
+        this.showToast('Image removed');
     }
 
     async compressImages() {
@@ -365,10 +419,11 @@ class ImageCompressor {
     reset() {
         this.images = [];
         this.compressedImages = [];
-        
         document.getElementById('fileInput').value = '';
         document.getElementById('settingsSection').classList.add('hidden');
         document.getElementById('resultsSection').classList.add('hidden');
+        document.getElementById('imagePreviewSection').classList.add('hidden');
+        document.getElementById('progressContainer').classList.add('hidden');
         document.getElementById('qualitySlider').value = 80;
         document.getElementById('qualityValue').textContent = '80%';
         document.getElementById('resizeSelect').value = 'original';
@@ -376,8 +431,7 @@ class ImageCompressor {
         document.getElementById('customSizeSection').classList.add('hidden');
         document.getElementById('customWidth').value = '';
         document.getElementById('customHeight').value = '';
-        
-        this.showToast('Reset completed');
+        this.showToast('Reset successfully');
     }
 
     showToast(message, type = 'success') {

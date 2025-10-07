@@ -108,7 +108,7 @@ class ImageCompressor {
 
     showSettings() {
         document.getElementById('settingsSection').classList.remove('hidden');
-        document.getElementById('settingsSection').classList.add('fade-in');
+        document.getElementById('settingsSection').classList.add('fade-in-scale');
     }
 
     async compressImages() {
@@ -117,30 +117,52 @@ class ImageCompressor {
         this.compressedImages = [];
         const settings = this.getCompressionSettings();
         
-        // Show loading state
+        // Show loading state and progress
         const compressBtn = document.getElementById('compressBtn');
         const originalText = compressBtn.innerHTML;
         compressBtn.innerHTML = '<div class="spinner mr-2"></div> Compressing...';
         compressBtn.disabled = true;
 
+        // Show progress bar
+        const progressContainer = document.getElementById('progressContainer');
+        const progressFill = document.getElementById('progressFill');
+        const progressText = document.getElementById('progressText');
+        
+        progressContainer.classList.remove('hidden');
+        progressContainer.classList.add('fade-in-up');
+
         try {
             for (let i = 0; i < this.images.length; i++) {
                 const compressedImage = await this.compressImage(this.images[i], settings);
                 this.compressedImages.push(compressedImage);
+                
+                // Update progress
+                const progress = Math.round(((i + 1) / this.images.length) * 100);
+                progressFill.style.width = `${progress}%`;
+                progressText.textContent = `${progress}%`;
+                
+                // Add delay for visual effect
+                await new Promise(resolve => setTimeout(resolve, 300));
             }
 
-            this.showResults();
-            this.showToast('Images compressed successfully!');
+            // Hide progress and show results
+            setTimeout(() => {
+                progressContainer.classList.add('hidden');
+                this.showResults();
+                this.showToast('Images compressed successfully!');
+                
+                // Track compression event
+                const totalOriginalSize = this.compressedImages.reduce((sum, img) => sum + img.originalSize, 0);
+                const totalCompressedSize = this.compressedImages.reduce((sum, img) => sum + img.compressedSize, 0);
+                const savingsPercent = Math.round(((totalOriginalSize - totalCompressedSize) / totalOriginalSize) * 100);
+                
+                this.trackEvent('image_compress', 'engagement', `${this.images.length}_images_${savingsPercent}%_savings`);
+            }, 500);
             
-            // Track compression event
-            const totalOriginalSize = this.compressedImages.reduce((sum, img) => sum + img.originalSize, 0);
-            const totalCompressedSize = this.compressedImages.reduce((sum, img) => sum + img.compressedSize, 0);
-            const savingsPercent = Math.round(((totalOriginalSize - totalCompressedSize) / totalOriginalSize) * 100);
-            
-            this.trackEvent('image_compress', 'engagement', `${this.images.length}_images_${savingsPercent}%_savings`);
         } catch (error) {
             this.showToast('Error compressing images', 'error');
             console.error(error);
+            progressContainer.classList.add('hidden');
         } finally {
             compressBtn.innerHTML = originalText;
             compressBtn.disabled = false;
@@ -235,25 +257,29 @@ class ImageCompressor {
     showResults() {
         const resultsSection = document.getElementById('resultsSection');
         const imageGrid = document.getElementById('imageGrid');
-
+        
         resultsSection.classList.remove('hidden');
-        resultsSection.classList.add('fade-in');
-
+        resultsSection.classList.add('fade-in-scale');
+        
         imageGrid.innerHTML = '';
-
+        
         this.compressedImages.forEach((image, index) => {
             const card = this.createImageCard(image, index);
             imageGrid.appendChild(card);
+            
+            // Stagger animation for cards
+            setTimeout(() => {
+                card.classList.add('fade-in-up');
+            }, index * 100);
         });
     }
 
     createImageCard(image, index) {
         const card = document.createElement('div');
-        card.className = 'image-card fade-in';
-
+        card.className = 'image-card';
+        
         const reductionPercent = Math.round(((image.originalSize - image.compressedSize) / image.originalSize) * 100);
-        const reductionClass = reductionPercent > 50 ? 'text-green-600' : reductionPercent > 20 ? 'text-blue-600' : 'text-yellow-600';
-
+        
         card.innerHTML = `
             <div class="image-preview">
                 <img src="${image.url}" alt="${image.originalName}">
@@ -266,7 +292,7 @@ class ImageCompressor {
                 </div>
                 <div class="stat-row">
                     <span class="stat-label">Compressed:</span>
-                    <span class="stat-value ${reductionClass}">${this.formatFileSize(image.compressedSize)}</span>
+                    <span class="stat-value size-reduction">${this.formatFileSize(image.compressedSize)}</span>
                 </div>
                 <div class="stat-row">
                     <span class="stat-label">Dimensions:</span>
@@ -277,7 +303,7 @@ class ImageCompressor {
                     <span class="stat-value">${image.compressedFormat.split('/')[1].toUpperCase()}</span>
                 </div>
                 <div class="mt-4">
-                    <button onclick="imageCompressor.downloadImage(${index})" class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-all duration-300">
+                    <button onclick="imageCompressor.downloadImage(${index})" class="w-full bg-blue-600 text-white px-4 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300">
                         <i class="fas fa-download mr-2"></i>
                         Download
                     </button>

@@ -512,12 +512,12 @@ class ImageCompressor {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const imageCompressor = new ImageCompressor();
+    window.imageCompressor = new ImageCompressor();
     
     // Keyboard shortcuts
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-            imageCompressor.closeModal();
+            window.imageCompressor.closeModal();
         }
     });
 });

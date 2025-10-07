@@ -277,7 +277,7 @@ class ImageCompressor {
                     <span class="stat-value">${image.compressedFormat.split('/')[1].toUpperCase()}</span>
                 </div>
                 <div class="mt-4">
-                    <button onclick="imageCompressor.downloadImage(${index})" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:from-purple-700 hover:to-blue-700 transition-all duration-300">
+                    <button onclick="imageCompressor.downloadImage(${index})" class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-all duration-300">
                         <i class="fas fa-download mr-2"></i>
                         Download
                     </button>

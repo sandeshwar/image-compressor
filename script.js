@@ -108,7 +108,7 @@ class ImageCompressor {
 
     showSettings() {
         document.getElementById('settingsSection').classList.remove('hidden');
-        document.getElementById('settingsSection').classList.add('fade-in-scale');
+        document.getElementById('settingsSection').style.animation = 'bounce-in 0.6s ease-out';
     }
 
     async compressImages() {
@@ -129,7 +129,7 @@ class ImageCompressor {
         const progressText = document.getElementById('progressText');
         
         progressContainer.classList.remove('hidden');
-        progressContainer.classList.add('fade-in-up');
+        progressContainer.style.animation = 'slideInFromTop 0.4s ease-out';
 
         try {
             for (let i = 0; i < this.images.length; i++) {
@@ -259,7 +259,7 @@ class ImageCompressor {
         const imageGrid = document.getElementById('imageGrid');
         
         resultsSection.classList.remove('hidden');
-        resultsSection.classList.add('fade-in-scale');
+        resultsSection.style.animation = 'bounce-in 0.6s ease-out';
         
         imageGrid.innerHTML = '';
         
@@ -269,45 +269,49 @@ class ImageCompressor {
             
             // Stagger animation for cards
             setTimeout(() => {
-                card.classList.add('fade-in-up');
-            }, index * 100);
+                card.style.animation = 'slideInFromBottom 0.5s ease-out';
+            }, index * 150);
         });
     }
 
     createImageCard(image, index) {
         const card = document.createElement('div');
-        card.className = 'image-card';
+        card.className = 'card-unique';
         
         const reductionPercent = Math.round(((image.originalSize - image.compressedSize) / image.originalSize) * 100);
         
         card.innerHTML = `
-            <div class="image-preview">
-                <img src="${image.url}" alt="${image.originalName}">
-                <div class="comparison-badge">${reductionPercent}% Smaller</div>
+            <div class="relative">
+                <img src="${image.url}" alt="${image.originalName}" class="w-full h-48 object-cover">
+                <div class="absolute top-4 right-4 bg-gradient-to-r from-green-400 to-emerald-400 text-white px-4 py-2 rounded-full text-sm font-bold">
+                    ${reductionPercent}% Smaller
+                </div>
             </div>
-            <div class="compression-stats">
-                <div class="stat-row">
-                    <span class="stat-label">Original:</span>
-                    <span class="stat-value">${this.formatFileSize(image.originalSize)}</span>
+            <div class="p-6">
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <div class="text-white/70 text-sm mb-1">Original</div>
+                        <div class="text-white font-semibold">${this.formatFileSize(image.originalSize)}</div>
+                    </div>
+                    <div>
+                        <div class="text-white/70 text-sm mb-1">Compressed</div>
+                        <div class="text-green-400 font-semibold">${this.formatFileSize(image.compressedSize)}</div>
+                    </div>
                 </div>
-                <div class="stat-row">
-                    <span class="stat-label">Compressed:</span>
-                    <span class="stat-value size-reduction">${this.formatFileSize(image.compressedSize)}</span>
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div>
+                        <div class="text-white/70 text-sm mb-1">Dimensions</div>
+                        <div class="text-white font-semibold">${image.width}×${image.height}</div>
+                    </div>
+                    <div>
+                        <div class="text-white/70 text-sm mb-1">Format</div>
+                        <div class="text-white font-semibold">${image.compressedFormat.split('/')[1].toUpperCase()}</div>
+                    </div>
                 </div>
-                <div class="stat-row">
-                    <span class="stat-label">Dimensions:</span>
-                    <span class="stat-value">${image.width}×${image.height}</span>
-                </div>
-                <div class="stat-row">
-                    <span class="stat-label">Format:</span>
-                    <span class="stat-value">${image.compressedFormat.split('/')[1].toUpperCase()}</span>
-                </div>
-                <div class="mt-4">
-                    <button onclick="imageCompressor.downloadImage(${index})" class="w-full bg-blue-600 text-white px-4 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300">
-                        <i class="fas fa-download mr-2"></i>
-                        Download
-                    </button>
-                </div>
+                <button onclick="imageCompressor.downloadImage(${index})" class="btn-glow w-full">
+                    <i class="fas fa-download mr-2"></i>
+                    Download
+                </button>
             </div>
         `;
 

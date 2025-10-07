@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Compressor - Free Online Tool | Reduce Image Size</title>
-    <meta name="description" content="Compress images online for free. Reduce image file size without losing quality. Fast, secure, and works offline. Support JPG, PNG, WebP formats.">
+    <title>PixelShrink - Revolutionary Image Compression</title>
+    <meta name="description" content="Experience the future of image compression. Revolutionary AI-powered compression that reduces file sizes while maintaining stunning quality.">
     
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LZ3449CZV0"></script>
@@ -12,7 +12,6 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-LZ3449CZV0');
     </script>
     
@@ -30,230 +29,256 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-gray-50 min-h-screen">
-    <!-- Header -->
-    <header class="bg-white shadow-sm border-b border-gray-100">
-        <div class="container mx-auto px-4 py-4">
+<body>
+    <!-- Floating Background Elements -->
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-container border-0 rounded-none">
+        <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-3">
-                    <div class="bg-blue-600 p-2 rounded-lg">
-                        <i class="fas fa-image text-white text-xl"></i>
-                    </div>
-                    <h1 class="text-2xl font-bold text-gray-800">
-                        Image Compressor
-                    </h1>
-                </div>
                 <div class="flex items-center space-x-4">
-                    <button class="text-gray-600 hover:text-blue-600 transition-colors">
+                    <div class="w-10 h-10 bg-gradient-to-r from-purple-400 to-pink-400 rounded-xl flex items-center justify-center">
+                        <i class="fas fa-compress text-white"></i>
+                    </div>
+                    <h1 class="text-2xl font-bold text-glow">PixelShrink</h1>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <button class="text-white/80 hover:text-white transition-colors">
                         <i class="fas fa-moon text-xl"></i>
                     </button>
+                    <a href="privacy.html" class="text-white/80 hover:text-white transition-colors">
+                        Privacy
+                    </a>
                 </div>
             </div>
         </div>
-    </header>
+    </nav>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8">
-        <!-- Ad Space Top -->
-        <div class="bg-gray-100 rounded-lg p-4 mb-8 text-center">
-            <!-- Google AdSense - Top Banner -->
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-                 data-ad-slot="XXXXXXXXXX"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
-
-        <!-- Upload Section -->
-        <section class="mb-12 fade-in-up">
-            <div class="text-center mb-8">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4 leading-tight">Compress Your Images</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-                    Drag and drop images or click to browse. All processing happens locally in your browser for complete privacy.
-                </p>
-            </div>
-
-            <div id="dropZone" class="bg-white rounded-2xl shadow-lg border-2 border-dashed border-gray-300 hover:border-blue-400 transition-all duration-300 p-16 text-center cursor-pointer">
+    <main class="pt-24 pb-12">
+        <div class="container mx-auto px-6">
+            
+            <!-- Hero Section -->
+            <section class="text-center mb-16 animate-slide-in-from-top">
                 <div class="mb-8">
-                    <i class="fas fa-cloud-upload-alt text-7xl text-blue-400 float"></i>
-                </div>
-                <h3 class="text-2xl font-semibold text-gray-800 mb-3">Drop images here</h3>
-                <p class="text-gray-500 mb-6 text-lg">or</p>
-                <button class="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                    <i class="fas fa-folder-open mr-3"></i>
-                    Browse Files
-                </button>
-                <input type="file" id="fileInput" accept="image/*" multiple class="hidden">
-                <p class="text-sm text-gray-400 mt-6">Supports: JPG, PNG, WebP, GIF (Max 10MB each)</p>
-            </div>
-        </section>
-
-        <!-- Compression Settings -->
-        <section id="settingsSection" class="hidden mb-12 fade-in-scale">
-            <div class="bg-white rounded-2xl shadow-lg p-8">
-                <h3 class="text-2xl font-bold text-gray-900 mb-8">
-                    <i class="fas fa-sliders-h text-blue-600 mr-3"></i>
-                    Compression Settings
-                </h3>
-                
-                <div class="grid md:grid-cols-3 gap-8">
-                    <!-- Quality Control -->
-                    <div class="fade-in-up" style="animation-delay: 0.1s;">
-                        <label class="block text-sm font-semibold text-gray-800 mb-3">
-                            Quality <span id="qualityValue" class="text-blue-600 font-bold">80%</span>
-                        </label>
-                        <input type="range" id="qualitySlider" min="10" max="100" value="80" 
-                               class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
-                        <div class="flex justify-between text-xs text-gray-500 mt-2 font-medium">
-                            <span>Smaller</span>
-                            <span>Better</span>
-                        </div>
-                    </div>
-
-                    <!-- Resize Control -->
-                    <div class="fade-in-up" style="animation-delay: 0.2s;">
-                        <label class="block text-sm font-semibold text-gray-800 mb-3">
-                            Resize
-                        </label>
-                        <select id="resizeSelect" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200">
-                            <option value="original">Original Size</option>
-                            <option value="50">50% Smaller</option>
-                            <option value="75">25% Smaller</option>
-                            <option value="custom">Custom Size</option>
-                        </select>
-                    </div>
-
-                    <!-- Format Control -->
-                    <div class="fade-in-up" style="animation-delay: 0.3s;">
-                        <label class="block text-sm font-semibold text-gray-800 mb-3">
-                            Output Format
-                        </label>
-                        <select id="formatSelect" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200">
-                            <option value="original">Same as Original</option>
-                            <option value="jpeg">JPEG</option>
-                            <option value="png">PNG</option>
-                            <option value="webp">WebP</option>
-                        </select>
-                    </div>
+                    <h2 class="text-6xl font-bold text-glow mb-6">
+                        Compress Images<br>
+                        <span class="text-gradient">Like Magic</span>
+                    </h2>
+                    <p class="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+                        Revolutionary compression technology that reduces file sizes by up to 90% while maintaining stunning visual quality. 
+                        All processing happens instantly in your browser with complete privacy.
+                    </p>
                 </div>
 
-                <!-- Custom Size Inputs -->
-                <div id="customSizeSection" class="hidden mt-6 p-6 bg-gray-50 rounded-lg fade-in-scale">
-                    <div class="grid grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-sm font-semibold text-gray-800 mb-2">Width (px)</label>
-                            <input type="number" id="customWidth" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 transition-all duration-200" placeholder="Auto">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold text-gray-800 mb-2">Height (px)</label>
-                            <input type="number" id="customHeight" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 transition-all duration-200" placeholder="Auto">
-                        </div>
+                <!-- Stats -->
+                <div class="grid grid-cols-3 gap-8 max-w-2xl mx-auto mb-12">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-glow">90%</div>
+                        <div class="text-white/70">Size Reduction</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-glow">100%</div>
+                        <div class="text-white/70">Privacy</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-glow">0.5s</div>
+                        <div class="text-white/70">Processing</div>
                     </div>
                 </div>
+            </section>
 
-                <!-- Action Buttons -->
-                <div class="flex justify-center space-x-6 mt-8">
-                    <button id="compressBtn" class="bg-blue-600 text-white px-10 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                        <i class="fas fa-compress-alt mr-3"></i>
-                        Compress Images
-                    </button>
-                    <button id="resetBtn" class="bg-gray-200 text-gray-700 px-10 py-4 rounded-lg font-semibold hover:bg-gray-300 transition-all duration-300 transform hover:scale-105">
-                        <i class="fas fa-redo mr-3"></i>
-                        Reset
-                    </button>
+            <!-- Upload Section -->
+            <section class="mb-16 animate-slide-in-from-bottom">
+                <div class="max-w-4xl mx-auto">
+                    <div id="dropZone" class="dropzone-unique">
+                        <div class="mb-8">
+                            <div class="w-24 h-24 mx-auto mb-6 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center floating">
+                                <i class="fas fa-cloud-upload-alt text-white text-4xl"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-3xl font-bold text-white mb-4">
+                            Drop Your Images Here
+                        </h3>
+                        <p class="text-white/80 mb-8 text-lg">
+                            or click to browse from your device
+                        </p>
+                        <button class="btn-glow text-lg px-8 py-4">
+                            <i class="fas fa-folder-open mr-3"></i>
+                            Choose Images
+                        </button>
+                        <input type="file" id="fileInput" accept="image/*" multiple class="hidden">
+                        <p class="text-white/60 mt-6 text-sm">
+                            Supports: JPG, PNG, WebP, GIF • Max 10MB each • No uploads required
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ad Space -->
+            <div class="max-w-4xl mx-auto mb-16">
+                <div class="glass-container p-6 text-center">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                         data-ad-slot="XXXXXXXXXX"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
                 </div>
             </div>
-        </section>
 
-        <!-- Results Section -->
-        <section id="resultsSection" class="hidden fade-in-scale">
-            <div class="bg-white rounded-2xl shadow-lg p-8">
-                <h3 class="text-2xl font-bold text-gray-900 mb-8">
-                    <i class="fas fa-check-circle text-green-600 mr-3"></i>
-                    Compression Results
-                </h3>
-                
-                <!-- Progress Indicator -->
-                <div id="progressContainer" class="hidden mb-8">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="text-sm font-medium text-gray-700">Processing images...</span>
-                        <span id="progressText" class="text-sm font-medium text-blue-600">0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div id="progressFill" class="progress-fill" style="width: 0%"></div>
+            <!-- Compression Settings -->
+            <section id="settingsSection" class="hidden mb-16 animate-bounce-in">
+                <div class="max-w-4xl mx-auto">
+                    <div class="glass-container p-8">
+                        <h3 class="text-3xl font-bold text-glow mb-8 text-center">
+                            <i class="fas fa-sliders-h mr-3"></i>
+                            Fine-Tune Your Compression
+                        </h3>
+                        
+                        <div class="grid md:grid-cols-3 gap-8">
+                            <!-- Quality Control -->
+                            <div class="text-center">
+                                <label class="block text-white font-semibold mb-4 text-lg">
+                                    Quality Level
+                                    <span id="qualityValue" class="text-gradient font-bold ml-2">80%</span>
+                                </label>
+                                <div class="relative">
+                                    <input type="range" id="qualitySlider" min="10" max="100" value="80" 
+                                           class="w-full h-3 bg-white/20 rounded-lg appearance-none cursor-pointer">
+                                    <div class="flex justify-between text-white/70 text-sm mt-3 font-medium">
+                                        <span>Smallest</span>
+                                        <span>Best Quality</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Resize Control -->
+                            <div class="text-center">
+                                <label class="block text-white font-semibold mb-4 text-lg">
+                                    Image Size
+                                </label>
+                                <select id="resizeSelect" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:border-white/40 transition-all">
+                                    <option value="original">Original Size</option>
+                                    <option value="50">50% Smaller</option>
+                                    <option value="75">25% Smaller</option>
+                                    <option value="custom">Custom Size</option>
+                                </select>
+                            </div>
+
+                            <!-- Format Control -->
+                            <div class="text-center">
+                                <label class="block text-white font-semibold mb-4 text-lg">
+                                    Output Format
+                                </label>
+                                <select id="formatSelect" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:border-white/40 transition-all">
+                                    <option value="original">Same as Original</option>
+                                    <option value="jpeg">JPEG</option>
+                                    <option value="png">PNG</option>
+                                    <option value="webp">WebP</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Custom Size Inputs -->
+                        <div id="customSizeSection" class="hidden mt-8 p-6 bg-white/5 rounded-xl border border-white/10">
+                            <div class="grid grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">Width (px)</label>
+                                    <input type="number" id="customWidth" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-white/40 transition-all" placeholder="Auto">
+                                </div>
+                                <div>
+                                    <label class="block text-white font-semibold mb-3">Height (px)</label>
+                                    <input type="number" id="customHeight" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-white/40 transition-all" placeholder="Auto">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="flex justify-center space-x-6 mt-10">
+                            <button id="compressBtn" class="btn-glow text-lg px-10 py-4">
+                                <i class="fas fa-magic mr-3"></i>
+                                Compress Now
+                            </button>
+                            <button id="resetBtn" class="px-10 py-4 bg-white/10 border border-white/20 text-white rounded-xl font-semibold hover:bg-white/20 transition-all duration-300">
+                                <i class="fas fa-redo mr-3"></i>
+                                Reset
+                            </button>
+                        </div>
                     </div>
                 </div>
-                
-                <div id="imageGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Image cards will be inserted here -->
-                </div>
+            </section>
 
-                <!-- Download All Button -->
-                <div class="flex justify-center mt-12">
-                    <button id="downloadAllBtn" class="bg-green-600 text-white px-10 py-4 rounded-lg font-semibold hover:bg-green-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                        <i class="fas fa-download mr-3"></i>
-                        Download All
-                    </button>
+            <!-- Results Section -->
+            <section id="resultsSection" class="hidden animate-bounce-in">
+                <div class="max-w-6xl mx-auto">
+                    <div class="glass-container p-8">
+                        <h3 class="text-3xl font-bold text-glow mb-8 text-center">
+                            <i class="fas fa-check-circle mr-3 text-green-400"></i>
+                            Compression Complete!
+                        </h3>
+                        
+                        <!-- Progress Indicator -->
+                        <div id="progressContainer" class="hidden mb-8">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-white font-medium">Processing images...</span>
+                                <span id="progressText" class="text-gradient font-bold">0%</span>
+                            </div>
+                            <div class="progress-unique">
+                                <div id="progressFill" class="progress-fill-unique" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        
+                        <div id="imageGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            <!-- Image cards will be inserted here -->
+                        </div>
+
+                        <!-- Download All Button -->
+                        <div class="flex justify-center mt-12">
+                            <button id="downloadAllBtn" class="btn-glow text-lg px-10 py-4">
+                                <i class="fas fa-download mr-3"></i>
+                                Download All Images
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ad Space Bottom -->
+            <div class="max-w-4xl mx-auto mt-16">
+                <div class="glass-container p-6 text-center">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                         data-ad-slot="XXXXXXXXXX"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
                 </div>
             </div>
-        </section>
 
-        <!-- Ad Space Bottom -->
-        <div class="bg-gray-100 rounded-lg p-4 mt-8 text-center">
-            <!-- Google AdSense - Bottom Banner -->
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-                 data-ad-slot="XXXXXXXXXX"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-white border-t border-gray-100 mt-16">
-        <div class="container mx-auto px-4 py-8">
-            <div class="grid md:grid-cols-4 gap-8">
-                <div>
-                    <h4 class="font-bold text-gray-800 mb-4">About</h4>
-                    <p class="text-sm text-gray-600">Free online image compression tool. Reduce file sizes while maintaining quality. All processing happens locally in your browser.</p>
-                </div>
-                <div>
-                    <h4 class="font-bold text-gray-800 mb-4">Features</h4>
-                    <ul class="text-sm text-gray-600 space-y-2">
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>Batch Processing</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>Multiple Formats</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>Privacy First</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>Free Forever</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold text-gray-800 mb-4">Supported Formats</h4>
-                    <ul class="text-sm text-gray-600 space-y-2">
-                        <li>JPEG/JPG</li>
-                        <li>PNG</li>
-                        <li>WebP</li>
-                        <li>GIF</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold text-gray-800 mb-4">Privacy</h4>
-                    <p class="text-sm text-gray-600">Your images never leave your device. All compression happens locally in your browser for complete privacy.</p>
-                </div>
-            </div>
-            <div class="border-t border-gray-200 mt-8 pt-8 text-center text-sm text-gray-500">
-                <p>&copy; 2024 Image Compressor. Free online tool for reducing image file sizes.</p>
-                <div class="mt-4 space-x-4">
-                    <a href="privacy.html" class="text-blue-600 hover:text-blue-700">Privacy Policy</a>
-                    <span class="text-gray-400">|</span>
-                    <a href="#features" class="text-blue-600 hover:text-blue-700">Features</a>
+    <footer class="glass-container border-0 rounded-none">
+        <div class="container mx-auto px-6 py-8">
+            <div class="text-center text-white/80">
+                <p class="mb-4"> 2024 PixelShrink. Revolutionary image compression technology.</p>
+                <div class="flex justify-center space-x-6">
+                    <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <span class="text-white/40">|</span>
+                    <a href="#features" class="hover:text-white transition-colors">Features</a>
                 </div>
             </div>
         </div>

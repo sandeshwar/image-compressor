@@ -520,6 +520,40 @@ document.addEventListener('DOMContentLoaded', () => {
             window.imageCompressor.closeModal();
         }
     });
+    
+    // Handle AdSense errors gracefully
+    window.addEventListener('error', (e) => {
+        if (e.message && e.message.includes('adsbygoogle')) {
+            console.log('AdSense error handled gracefully');
+            // Show fallback if ad fails to load
+            const adContainers = document.querySelectorAll('.ad-container');
+            adContainers.forEach(container => {
+                const adsbygoogle = container.querySelector('ins.adsbygoogle');
+                if (adsbygoogle && adsbygoogle.getAttribute('data-ad-status') === 'unfilled') {
+                    const fallback = container.querySelector('.ad-fallback');
+                    if (fallback) {
+                        fallback.style.display = 'block';
+                    }
+                }
+            });
+        }
+    });
+    
+    // Monitor AdSense loading
+    setTimeout(() => {
+        const adsbygoogleElements = document.querySelectorAll('ins.adsbygoogle');
+        adsbygoogleElements.forEach(ad => {
+            if (!ad.innerHTML || ad.innerHTML.trim() === '') {
+                const container = ad.closest('.ad-container');
+                if (container) {
+                    const fallback = container.querySelector('.ad-fallback');
+                    if (fallback) {
+                        fallback.style.display = 'block';
+                    }
+                }
+            }
+        });
+    }, 3000); // Check after 3 seconds
 });
 
 // Add slideOut animation

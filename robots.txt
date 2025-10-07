@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Sitemap: https://compress-image.uk/sitemap.xml
+
+# Allow search engines to crawl all content
+# Disallow temporary or private files if any
+# Disallow: /private/
+# Disallow: /temp/

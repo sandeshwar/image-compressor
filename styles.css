@@ -345,6 +345,68 @@ input[type="number"]::placeholder {
     background: linear-gradient(135deg, #5a67d8, #6b46c1);
 }
 
+/* Image Modal Styling */
+#imageModal {
+    animation: fadeIn 0.3s ease-out;
+}
+
+#imageModal .glass-container {
+    animation: slideInFromBottom 0.4s ease-out;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+#modalImage {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+#modalImage:hover {
+    transform: scale(1.02);
+}
+
+.modal-info-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-info-label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.modal-info-value {
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Modal animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromBottom {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 /* Range Slider Styling */
 input[type="range"] {
     background: rgba(255, 255, 255, 0.2) !important;

@@ -350,9 +350,13 @@ class ImageCompressor {
         
         card.innerHTML = `
             <div class="relative">
-                <img src="${image.url}" alt="${image.originalName}" class="w-full h-48 object-cover">
+                <img src="${image.url}" alt="${image.originalName}" class="w-full h-48 object-cover cursor-pointer" onclick="imageCompressor.previewImage(${index})">
                 <div class="absolute top-4 right-4 ${badgeClass} text-white px-4 py-2 rounded-full text-sm font-bold">
                     ${displayText}
+                </div>
+                <div class="absolute top-4 left-4 bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium cursor-pointer hover:bg-white/30 transition-all" onclick="imageCompressor.previewImage(${index})">
+                    <i class="fas fa-eye mr-1"></i>
+                    Preview
                 </div>
             </div>
             <div class="p-6">
@@ -376,10 +380,16 @@ class ImageCompressor {
                         <div class="text-white font-semibold">${image.compressedFormat.split('/')[1].toUpperCase()}</div>
                     </div>
                 </div>
-                <button onclick="imageCompressor.downloadImage(${index})" class="btn-glow w-full">
-                    <i class="fas fa-download mr-2"></i>
-                    Download
-                </button>
+                <div class="grid grid-cols-2 gap-4">
+                    <button onclick="imageCompressor.previewImage(${index})" class="px-4 py-3 bg-white/10 border border-white/20 text-white rounded-xl font-semibold hover:bg-white/20 transition-all">
+                        <i class="fas fa-eye mr-2"></i>
+                        Preview
+                    </button>
+                    <button onclick="imageCompressor.downloadImage(${index})" class="btn-glow">
+                        <i class="fas fa-download mr-2"></i>
+                        Download
+                    </button>
+                </div>
             </div>
         `;
 
@@ -431,7 +441,55 @@ class ImageCompressor {
         document.getElementById('customSizeSection').classList.add('hidden');
         document.getElementById('customWidth').value = '';
         document.getElementById('customHeight').value = '';
+        this.closeModal();
         this.showToast('Reset successfully');
+    }
+
+    previewImage(index) {
+        const image = this.compressedImages[index];
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalInfo = document.getElementById('modalInfo');
+        const modalDownloadBtn = document.getElementById('modalDownloadBtn');
+        
+        modalImage.src = image.url;
+        modalTitle.textContent = image.originalName;
+        
+        const sizeDifference = image.originalSize - image.compressedSize;
+        const reductionPercent = Math.round((sizeDifference / image.originalSize) * 100);
+        
+        modalInfo.innerHTML = `
+            <div class="modal-info-item">
+                <div class="modal-info-label">Original Size</div>
+                <div class="modal-info-value">${this.formatFileSize(image.originalSize)}</div>
+            </div>
+            <div class="modal-info-item">
+                <div class="modal-info-label">Compressed Size</div>
+                <div class="modal-info-value">${this.formatFileSize(image.compressedSize)}</div>
+            </div>
+            <div class="modal-info-item">
+                <div class="modal-info-label">Dimensions</div>
+                <div class="modal-info-value">${image.width}×${image.height}</div>
+            </div>
+            <div class="modal-info-item">
+                <div class="modal-info-label">Format</div>
+                <div class="modal-info-value">${image.compressedFormat.split('/')[1].toUpperCase()}</div>
+            </div>
+        `;
+        
+        modalDownloadBtn.onclick = () => this.downloadImage(index);
+        
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        
+        this.trackEvent('image_preview', 'engagement', 'modal_open');
+    }
+
+    closeModal() {
+        const modal = document.getElementById('imageModal');
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
     }
 
     showToast(message, type = 'success') {
@@ -453,8 +511,16 @@ class ImageCompressor {
     }
 }
 
-// Initialize the application
-const imageCompressor = new ImageCompressor();
+document.addEventListener('DOMContentLoaded', () => {
+    const imageCompressor = new ImageCompressor();
+    
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            imageCompressor.closeModal();
+        }
+    });
+});
 
 // Add slideOut animation
 const style = document.createElement('style');

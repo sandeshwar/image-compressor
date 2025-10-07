@@ -8,6 +8,26 @@ class ImageCompressor {
     init() {
         this.setupEventListeners();
         this.setupDragAndDrop();
+        this.trackPageView();
+    }
+
+    // Analytics tracking functions
+    trackPageView() {
+        if (typeof gtag !== 'undefined') {
+            gtag('config', 'GA_MEASUREMENT_ID', {
+                page_title: 'Image Compressor',
+                page_location: window.location.href
+            });
+        }
+    }
+
+    trackEvent(eventName, category, label) {
+        if (typeof gtag !== 'undefined') {
+            gtag('event', eventName, {
+                event_category: category,
+                event_label: label
+            });
+        }
     }
 
     setupEventListeners() {
@@ -82,6 +102,7 @@ class ImageCompressor {
             this.images = validFiles;
             this.showSettings();
             this.showToast(`${validFiles.length} image(s) loaded successfully`);
+            this.trackEvent('file_upload', 'engagement', `${validFiles.length}_images`);
         }
     }
 
@@ -110,6 +131,13 @@ class ImageCompressor {
 
             this.showResults();
             this.showToast('Images compressed successfully!');
+            
+            // Track compression event
+            const totalOriginalSize = this.compressedImages.reduce((sum, img) => sum + img.originalSize, 0);
+            const totalCompressedSize = this.compressedImages.reduce((sum, img) => sum + img.compressedSize, 0);
+            const savingsPercent = Math.round(((totalOriginalSize - totalCompressedSize) / totalOriginalSize) * 100);
+            
+            this.trackEvent('image_compress', 'engagement', `${this.images.length}_images_${savingsPercent}%_savings`);
         } catch (error) {
             this.showToast('Error compressing images', 'error');
             console.error(error);
@@ -281,6 +309,7 @@ class ImageCompressor {
         
         link.click();
         this.showToast('Image downloaded successfully!');
+        this.trackEvent('download', 'engagement', `${image.compressedFormat.split('/')[1]}_${this.formatFileSize(image.compressedSize)}`);
     }
 
     downloadAll() {

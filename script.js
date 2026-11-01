@@ -12,7 +12,7 @@ import {
     qualityRatio,
     resolveOutputType,
     uniqueFilename
-} from './lib.js?v=20261103';
+} from './lib.js?v=20261105';
 
 const EXTENSION_TYPES = new Map([
     ['jpg', 'image/jpeg'],
@@ -58,19 +58,25 @@ function init() {
         customWidth: document.getElementById('custom-width'),
         customHeight: document.getElementById('custom-height'),
         compressButton: document.getElementById('compress-button'),
+        compressButtonLabel: document.getElementById('compress-button-label'),
         cancelButton: document.getElementById('cancel-button'),
+        cancelButtonLabel: document.getElementById('cancel-button-label'),
         clearButton: document.getElementById('clear-button'),
         addButton: document.getElementById('add-button'),
         queueCount: document.getElementById('queue-count'),
         queueNotice: document.getElementById('queue-notice'),
+        queueNoticeText: document.getElementById('queue-notice-text'),
         progressRegion: document.getElementById('progress-region'),
         progressLabel: document.getElementById('progress-label'),
         progressCount: document.getElementById('progress-count'),
         progress: document.getElementById('progress'),
         status: document.getElementById('status'),
+        statusText: document.getElementById('status-text'),
+        statusIcon: document.querySelector('#status .status-icon use'),
         summary: document.getElementById('summary'),
         summaryText: document.getElementById('summary-text'),
         summarySub: document.getElementById('summary-sub'),
+        summaryIcon: document.querySelector('#summary .summary-icon use'),
         downloadAll: document.getElementById('download-all'),
         fileList: document.getElementById('file-list'),
         previewDialog: document.getElementById('preview-dialog'),
@@ -190,9 +196,26 @@ function isImageFile(file) {
     return Boolean(resolveSourceType(file));
 }
 
+function statusIconForType(type) {
+    if (type === 'success') return 'check';
+    if (type === 'warning' || type === 'error') return 'alert';
+    return 'info';
+}
+
+function statusIconForState(status) {
+    if (status === 'working') return 'loader';
+    if (status === 'done') return 'check';
+    if (status === 'error') return 'alert';
+    return 'clock';
+}
+
 function setStatus(message, type) {
     if (!els || !els.status) return;
-    els.status.textContent = message || '';
+    els.statusText.textContent = message || '';
+    els.status.hidden = !message;
+    if (els.statusIcon) {
+        els.statusIcon.setAttribute('href', '#icon-' + statusIconForType(type));
+    }
     if (message && type) {
         els.status.dataset.type = type;
     } else {
@@ -205,7 +228,7 @@ function setQueueNotice(files) {
 
     if (!files || !files.length) {
         els.queueNotice.hidden = true;
-        els.queueNotice.textContent = '';
+        els.queueNoticeText.textContent = '';
         return;
     }
 
@@ -214,7 +237,7 @@ function setQueueNotice(files) {
     });
     const extra = files.length > 3 ? ' and ' + (files.length - 3) + ' more' : '';
 
-    els.queueNotice.textContent = 'Skipped ' + files.length + ' file' + (files.length === 1 ? '' : 's') +
+    els.queueNoticeText.textContent = 'Skipped ' + files.length + ' file' + (files.length === 1 ? '' : 's') +
         ': ' + names.join(', ') + extra + '. Use JPEG, PNG, WebP, or GIF.';
     els.queueNotice.hidden = false;
 }
@@ -355,6 +378,8 @@ function createRow(item) {
     const image = fragment.querySelector('.file-thumb img');
     const name = fragment.querySelector('.file-name');
     const status = fragment.querySelector('.file-status');
+    const statusLabel = fragment.querySelector('.file-status .status-label');
+    const statusIcon = fragment.querySelector('.file-status-icon use');
     const meta = fragment.querySelector('.file-meta');
     const error = fragment.querySelector('.file-error');
     const original = fragment.querySelector('.file-original');
@@ -382,7 +407,8 @@ function createRow(item) {
     name.textContent = item.name;
     name.title = item.name;
     meta.textContent = formatItemMeta(item);
-    status.textContent = 'Queued';
+    statusLabel.textContent = 'Queued';
+    statusIcon.setAttribute('href', '#icon-clock');
     error.hidden = true;
     original.textContent = formatBytes(item.file.size);
     result.textContent = '—';
@@ -405,6 +431,8 @@ function createRow(item) {
         image: image,
         name: name,
         status: status,
+        statusLabel: statusLabel,
+        statusIcon: statusIcon,
         meta: meta,
         error: error,
         original: original,
@@ -445,7 +473,8 @@ function updateRow(item) {
     if (item.status === 'done') statusClass += ' is-done';
     if (item.status === 'error') statusClass += ' is-error';
 
-    refs.status.textContent = label;
+    refs.statusLabel.textContent = label;
+    refs.statusIcon.setAttribute('href', '#icon-' + statusIconForState(item.status));
     refs.status.className = statusClass;
     if (item.error) {
         refs.status.title = item.error;
@@ -507,14 +536,14 @@ function updateUI() {
     els.fileInput.disabled = busy;
     els.clearButton.disabled = !hasItems || busy;
     els.compressButton.disabled = !hasItems || busy;
-    els.compressButton.textContent = state.compressing
+    els.compressButtonLabel.textContent = state.compressing
         ? 'Compressing…'
         : 'Compress ' + count + ' image' + (count === 1 ? '' : 's');
     els.compressButton.setAttribute('aria-busy', String(state.compressing));
 
     els.cancelButton.hidden = !state.compressing;
     els.cancelButton.disabled = state.cancelRequested;
-    els.cancelButton.textContent = state.cancelRequested ? 'Cancelling…' : 'Cancel';
+    els.cancelButtonLabel.textContent = state.cancelRequested ? 'Cancelling…' : 'Cancel';
     els.settingsFieldset.disabled = state.compressing;
     els.progressRegion.hidden = !state.compressing;
     els.fileList.setAttribute('aria-busy', String(busy));
@@ -554,6 +583,7 @@ function updateSummary() {
 
     els.summary.classList.toggle('has-errors', failed > 0);
     els.summary.classList.toggle('has-pending', failed === 0 && waiting > 0);
+    els.summaryIcon.setAttribute('href', '#icon-' + (failed > 0 ? 'alert' : waiting > 0 ? 'clock' : 'check'));
 
     if (!doneItems.length) {
         els.summary.hidden = true;
@@ -595,7 +625,7 @@ function requestCancel() {
     if (!state.compressing || state.cancelRequested) return;
     state.cancelRequested = true;
     els.cancelButton.disabled = true;
-    els.cancelButton.textContent = 'Cancelling…';
+    els.cancelButtonLabel.textContent = 'Cancelling…';
     setStatus('Finishing the current image, then stopping.', 'info');
 }
 

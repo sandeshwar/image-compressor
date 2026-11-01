@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,65 +7,288 @@
     <meta name="referrer" content="no-referrer">
     <meta name="color-scheme" content="light dark">
 
-    <title>PixelShrink — Compress images locally in your browser</title>
-    <meta name="description" content="Compress JPEG, PNG, and WebP images on your device. No uploads, no accounts, no limits. Free forever.">
+    <title>Free Image Compressor — Local &amp; Private | PixelShrink</title>
+    <meta name="description" content="Compress JPEG, PNG, WebP and GIF images free in your browser. No uploads, accounts or file limits. Private, local image compression that works offline.">
     <meta name="author" content="PixelShrink">
+    <meta name="application-name" content="PixelShrink">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href="https://compress-image.uk/">
+    <link rel="alternate" hreflang="en-GB" href="https://compress-image.uk/">
+    <link rel="alternate" hreflang="x-default" href="https://compress-image.uk/">
 
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="PixelShrink">
-    <meta property="og:title" content="PixelShrink — Compress images locally">
-    <meta property="og:description" content="Private, local image compression with no uploads, accounts, or limits.">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:title" content="Free Image Compressor — Local &amp; Private">
+    <meta property="og:description" content="Compress JPEG, PNG, WebP and GIF images free in your browser. No uploads, accounts or file limits.">
     <meta property="og:url" content="https://compress-image.uk/">
     <meta property="og:image" content="https://compress-image.uk/og-image.png">
+    <meta property="og:image:secure_url" content="https://compress-image.uk/og-image.png">
+    <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="PixelShrink — compress images without uploading them.">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="PixelShrink — Compress images locally">
-    <meta name="twitter:description" content="Private, local image compression with no uploads, accounts, or limits.">
+    <meta name="twitter:title" content="Free Image Compressor — PixelShrink">
+    <meta name="twitter:description" content="Compress images locally with no uploads, accounts or file limits.">
     <meta name="twitter:image" content="https://compress-image.uk/og-image.png">
+    <meta name="twitter:image:alt" content="PixelShrink — compress images without uploading them.">
 
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f6f2">
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#101211">
 
-    <script src="./secure.js?v=20261103"></script>
+    <script src="./secure.js?v=20261105"></script>
     <link rel="icon" href="./favicon.ico" sizes="any">
     <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png">
     <link rel="apple-touch-icon" href="./apple-touch-icon.png">
     <link rel="manifest" href="./manifest.json">
-    <link rel="stylesheet" href="./styles.css?v=20261103">
+    <link rel="stylesheet" href="./styles.css?v=20261105">
 
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "PixelShrink",
-        "description": "A local-first image compressor that runs entirely in the browser. Images are never uploaded.",
-        "url": "https://compress-image.uk/",
-        "applicationCategory": "MultimediaApplication",
-        "operatingSystem": "Any",
-        "browserRequirements": "A modern browser with JavaScript and Canvas support",
-        "isAccessibleForFree": true,
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "GBP"
-        },
-        "license": "https://opensource.org/licenses/MIT",
-        "featureList": [
-            "On-device image compression",
-            "No uploads, accounts, analytics, or ads",
-            "JPEG, PNG, WebP, and GIF input",
-            "Batch processing and ZIP export",
-            "No artificial file-count or file-size limits",
-            "Free and open source"
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": "https://compress-image.uk/#organization",
+                "name": "PixelShrink",
+                "url": "https://compress-image.uk/",
+                "logo": {
+                    "@type": "ImageObject",
+                    "@id": "https://compress-image.uk/#logo",
+                    "url": "https://compress-image.uk/icon-512.png",
+                    "width": 512,
+                    "height": 512,
+                    "caption": "PixelShrink"
+                },
+                "sameAs": [
+                    "https://github.com/sandeshwar/image-compressor"
+                ]
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://compress-image.uk/#website",
+                "url": "https://compress-image.uk/",
+                "name": "PixelShrink",
+                "description": "A free, local-first image compressor that runs entirely in the browser.",
+                "inLanguage": "en-GB",
+                "publisher": {
+                    "@id": "https://compress-image.uk/#organization"
+                }
+            },
+            {
+                "@type": "ImageObject",
+                "@id": "https://compress-image.uk/#primaryimage",
+                "url": "https://compress-image.uk/og-image.png",
+                "width": 1200,
+                "height": 630,
+                "caption": "PixelShrink — compress images without uploading them"
+            },
+            {
+                "@type": "WebPage",
+                "@id": "https://compress-image.uk/#webpage",
+                "url": "https://compress-image.uk/",
+                "name": "Free Image Compressor — Local & Private | PixelShrink",
+                "description": "Compress JPEG, PNG, WebP and GIF images free in your browser. No uploads, accounts or file limits. Private, local image compression that works offline.",
+                "isPartOf": {
+                    "@id": "https://compress-image.uk/#website"
+                },
+                "about": {
+                    "@id": "https://compress-image.uk/#app"
+                },
+                "primaryImageOfPage": {
+                    "@id": "https://compress-image.uk/#primaryimage"
+                },
+                "publisher": {
+                    "@id": "https://compress-image.uk/#organization"
+                },
+                "dateModified": "2026-11-01",
+                "inLanguage": "en-GB",
+                "speakable": {
+                    "@type": "SpeakableSpecification",
+                    "cssSelector": [
+                        "#quick-answer"
+                    ]
+                }
+            },
+            {
+                "@type": "WebApplication",
+                "@id": "https://compress-image.uk/#app",
+                "name": "PixelShrink",
+                "alternateName": [
+                    "PixelShrink Image Compressor",
+                    "Pixel Shrink"
+                ],
+                "url": "https://compress-image.uk/",
+                "description": "A free, local-first image compressor for JPEG, PNG, WebP and GIF files. Images are processed in the browser and never uploaded.",
+                "applicationCategory": "MultimediaApplication",
+                "applicationSubCategory": "Image compression",
+                "operatingSystem": "Any",
+                "browserRequirements": "A modern browser with JavaScript and Canvas support",
+                "isAccessibleForFree": true,
+                "inLanguage": "en-GB",
+                "license": "https://opensource.org/licenses/MIT",
+                "softwareVersion": "2.0.0",
+                "dateModified": "2026-11-01",
+                "image": {
+                    "@id": "https://compress-image.uk/#primaryimage"
+                },
+                "publisher": {
+                    "@id": "https://compress-image.uk/#organization"
+                },
+                "mainEntityOfPage": {
+                    "@id": "https://compress-image.uk/#webpage"
+                },
+                "isPartOf": {
+                    "@id": "https://compress-image.uk/#website"
+                },
+                "sameAs": [
+                    "https://github.com/sandeshwar/image-compressor"
+                ],
+                "featureList": [
+                    "On-device image compression",
+                    "No uploads, accounts, analytics, or ads",
+                    "JPEG, PNG, WebP, and GIF input",
+                    "JPEG, PNG, and WebP output",
+                    "Batch processing and ZIP export",
+                    "Preview, per-file progress, and cancellation",
+                    "No artificial file-count or file-size limits",
+                    "Offline use after the first visit",
+                    "Free and open source"
+                ],
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "GBP"
+                }
+            },
+            {
+                "@type": "HowTo",
+                "@id": "https://compress-image.uk/#howto",
+                "name": "How to compress images locally in your browser",
+                "description": "Compress JPEG, PNG, WebP, or GIF images in PixelShrink without uploading them.",
+                "totalTime": "PT2M",
+                "isPartOf": {
+                    "@id": "https://compress-image.uk/#webpage"
+                },
+                "tool": [
+                    {
+                        "@type": "HowToTool",
+                        "name": "PixelShrink in a modern web browser"
+                    }
+                ],
+                "step": [
+                    {
+                        "@type": "HowToStep",
+                        "position": 1,
+                        "name": "Add images",
+                        "text": "Drop, paste, or browse for JPEG, PNG, WebP, or GIF files. Files are read locally.",
+                        "url": "https://compress-image.uk/#image-compressor"
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "position": 2,
+                        "name": "Choose settings",
+                        "text": "Choose the output format, quality, and size. Defaults are Same as source, 80, and Original.",
+                        "url": "https://compress-image.uk/#settings-heading"
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "position": 3,
+                        "name": "Compress and save",
+                        "text": "Select Compress, review the result and savings, then download one image or a ZIP. The original is kept when re-encoding would be larger.",
+                        "url": "https://compress-image.uk/#image-compressor"
+                    }
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "@id": "https://compress-image.uk/#faq",
+                "isPartOf": {
+                    "@id": "https://compress-image.uk/#webpage"
+                },
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "Are my images uploaded?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "No. PixelShrink reads files with the File API, draws them to a local canvas, and saves the result in memory. There is no upload endpoint, no account, and no third-party script. The page's Content Security Policy also blocks outbound connections."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Is there a file limit?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "No file-count limit and no artificial file-size limit. The only constraints are your device's memory and the browser's canvas limits. Very large images are scaled down automatically when a canvas would be too big; the result's dimensions are shown in the queue."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What happens to GIFs and transparent images?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "GIF input uses the first frame and is saved as PNG by default. Transparency is preserved for PNG, WebP, and GIF input. If you choose JPEG, transparent areas are filled with white because JPEG does not support transparency."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What if the compressed file is larger?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "PixelShrink compares the encoded result with the original. If no resize or format change was requested and the result would be larger, it keeps the original bytes instead of making the file worse. That row is marked “original kept”."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Does compressing an image reduce quality?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Lossy formats such as JPEG and WebP can discard detail as the quality setting drops. PNG output is lossless, so the quality slider does not apply. Compare the result at its intended display size before deleting the original; the guide explains the trade-offs."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Which format should I choose?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Use JPEG for photographs when transparency is not needed, PNG for screenshots or graphics that need lossless output, and WebP when you want a smaller modern file with optional transparency. GIF input becomes a still PNG. The format guide above and the full guide explain the details."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Does it work offline?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, after the first visit. A service worker caches the app itself, so compression can run without a network. The service worker only stores this site's files; it never caches or transmits your images."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Do I need an account or an install?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "No. PixelShrink runs in a modern browser with no account, sign-up, or installation. It works on desktop and mobile, and you can add images with drag and drop, the file picker, or paste."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Is it really free?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes. No ads, no accounts, no tracking, and no paid tier. The code is MIT licensed and the source is on GitHub. If you find a bug, open an issue."
+                        }
+                    }
+                ]
+            }
         ]
     }
     </script>
 
-    <script src="./register-sw.js?v=20261103" defer></script>
-    <script type="module" src="./script.js?v=20261103"></script>
+    <script src="./register-sw.js?v=20261105" defer></script>
+    <script type="module" src="./script.js?v=20261105"></script>
 </head>
 <body>
     <svg class="svg-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
@@ -110,6 +333,41 @@
             <path d="M12 3l9 17H3L12 3Z"></path>
             <path d="M12 9v5M12 17h.01"></path>
         </symbol>
+        <symbol id="icon-info" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M12 11v5M12 8h.01"></path>
+        </symbol>
+        <symbol id="icon-compress" viewBox="0 0 24 24">
+            <path d="M8 5H5v3M16 5h3v3M8 19H5v-3M16 19h3v-3M8 12h8M10 9l-2 3 2 3M14 9l2 3-2 3"></path>
+        </symbol>
+        <symbol id="icon-sliders" viewBox="0 0 24 24">
+            <path d="M4 7h16M4 12h16M4 17h16"></path>
+            <circle cx="9" cy="7" r="2"></circle>
+            <circle cx="15" cy="12" r="2"></circle>
+            <circle cx="7" cy="17" r="2"></circle>
+        </symbol>
+        <symbol id="icon-image" viewBox="0 0 24 24">
+            <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+            <circle cx="8.5" cy="9.5" r="1.5"></circle>
+            <path d="M21 15l-5-5L5 21"></path>
+        </symbol>
+        <symbol id="icon-folder" viewBox="0 0 24 24">
+            <path d="M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"></path>
+        </symbol>
+        <symbol id="icon-clock" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="8"></circle>
+            <path d="M12 8v4l3 2"></path>
+        </symbol>
+        <symbol id="icon-loader" viewBox="0 0 24 24">
+            <path d="M12 3a9 9 0 1 0 9 9"></path>
+        </symbol>
+        <symbol id="icon-book" viewBox="0 0 24 24">
+            <path d="M4 5a2 2 0 0 1 2-2h14v16H6a2 2 0 0 0-2 2V5Z"></path>
+            <path d="M4 19a2 2 0 0 1 2-2h14"></path>
+        </symbol>
+        <symbol id="icon-arrow-right" viewBox="0 0 24 24">
+            <path d="M5 12h14M13 6l6 6-6 6"></path>
+        </symbol>
     </svg>
 
     <a class="skip-link" href="#main">Skip to content</a>
@@ -122,8 +380,8 @@
             </a>
             <nav class="site-nav" aria-label="Primary">
                 <a href="#how-it-works">How it works</a>
+                <a href="./guide.html">Guide</a>
                 <a href="./privacy.html">Privacy</a>
-                <a href="https://github.com/sandeshwar/image-compressor" target="_blank" rel="noopener noreferrer">Source</a>
             </nav>
         </div>
     </header>
@@ -135,7 +393,7 @@
                 Private by design
             </p>
             <h1 id="hero-title">Compress images without uploading them.</h1>
-            <p class="lede">PixelShrink runs entirely in your browser. Your files stay on your device, and there is no account, upload, or file limit.</p>
+            <p class="lede" id="quick-answer">PixelShrink is a free online image compressor that runs entirely in your browser. Compress JPEG, PNG, WebP and GIF files without uploading them — no accounts, no tracking, no file limits.</p>
             <ul class="trust-list" aria-label="Privacy and product promises">
                 <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-lock"></use></svg> On-device processing</li>
                 <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-shield"></use></svg> No tracking</li>
@@ -144,7 +402,7 @@
             </ul>
         </section>
 
-        <section class="tool wrap" aria-labelledby="tool-heading">
+        <section id="image-compressor" class="tool wrap" aria-labelledby="tool-heading">
             <h2 id="tool-heading" class="visually-hidden">Image compressor</h2>
 
             <button type="button" id="dropzone" class="dropzone" aria-describedby="formats-note">
@@ -152,7 +410,7 @@
                     <svg class="icon" focusable="false"><use href="#icon-upload"></use></svg>
                 </span>
                 <span id="dropzone-title" class="dropzone-title">Drop images here</span>
-                <span class="dropzone-sub">or <span class="text-link">browse files</span></span>
+                <span class="dropzone-sub">or <span class="text-link"><svg class="icon inline-icon" aria-hidden="true" focusable="false"><use href="#icon-folder"></use></svg>browse files</span></span>
                 <span id="formats-note" class="dropzone-note">JPEG, PNG, WebP, and GIF. GIFs use the first frame. You can also paste an image.</span>
             </button>
             <input id="file-input" type="file" accept="image/jpeg,image/png,image/webp,image/gif" multiple hidden>
@@ -166,12 +424,18 @@
                 <p class="noscript">PixelShrink needs JavaScript because compression runs in your browser. Your images still never leave your device.</p>
             </noscript>
 
-            <p id="status" class="status" role="status" aria-live="polite"></p>
+            <p id="status" class="status" role="status" aria-live="polite" hidden>
+                <svg class="icon status-icon" aria-hidden="true" focusable="false"><use href="#icon-info"></use></svg>
+                <span id="status-text" class="status-text"></span>
+            </p>
 
             <div id="workspace" class="workspace" hidden>
                 <aside class="panel settings" aria-labelledby="settings-heading">
                     <div class="panel-head">
-                        <h2 id="settings-heading">Settings</h2>
+                        <h2 id="settings-heading">
+                            <svg class="icon panel-icon" aria-hidden="true" focusable="false"><use href="#icon-sliders"></use></svg>
+                            Settings
+                        </h2>
                         <p class="panel-sub">Applied to every image.</p>
                     </div>
 
@@ -180,7 +444,7 @@
 
                         <div class="field">
                             <div class="field-label">
-                                <label for="quality">Quality</label>
+                                <label for="quality"><svg class="icon label-icon" aria-hidden="true" focusable="false"><use href="#icon-sliders"></use></svg>Quality</label>
                                 <output id="quality-value" for="quality">80%</output>
                             </div>
                             <input id="quality" type="range" min="10" max="100" step="1" value="80" aria-describedby="quality-hint">
@@ -188,7 +452,7 @@
                         </div>
 
                         <div class="field">
-                            <label for="format">Output format</label>
+                            <label for="format"><svg class="icon label-icon" aria-hidden="true" focusable="false"><use href="#icon-image"></use></svg>Output format</label>
                             <select id="format" aria-describedby="format-hint">
                                 <option value="auto" selected>Same as source</option>
                                 <option value="image/jpeg">JPEG</option>
@@ -199,7 +463,7 @@
                         </div>
 
                         <div class="field">
-                            <label for="resize">Size</label>
+                            <label for="resize"><svg class="icon label-icon" aria-hidden="true" focusable="false"><use href="#icon-expand"></use></svg>Size</label>
                             <select id="resize" aria-describedby="resize-hint">
                                 <option value="original" selected>Original</option>
                                 <option value="75">75% of original</option>
@@ -221,14 +485,26 @@
                     </fieldset>
 
                     <div class="settings-actions">
-                        <button id="compress-button" class="btn btn-primary" type="button" disabled>Compress images</button>
-                        <button id="cancel-button" class="btn btn-secondary" type="button" hidden>Cancel</button>
-                        <button id="clear-button" class="btn btn-ghost" type="button" disabled>Clear all</button>
+                        <button id="compress-button" class="btn btn-primary" type="button" disabled>
+                            <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-compress"></use></svg>
+                            <span id="compress-button-label">Compress images</span>
+                        </button>
+                        <button id="cancel-button" class="btn btn-secondary" type="button" hidden>
+                            <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-x"></use></svg>
+                            <span id="cancel-button-label">Cancel</span>
+                        </button>
+                        <button id="clear-button" class="btn btn-ghost" type="button" disabled>
+                            <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-trash"></use></svg>
+                            Clear all
+                        </button>
                     </div>
 
                     <div id="progress-region" class="progress-region" hidden>
                         <div class="progress-labels">
-                            <span id="progress-label">Compressing images…</span>
+                            <span class="progress-label-wrap">
+                                <svg class="icon progress-icon" aria-hidden="true" focusable="false"><use href="#icon-loader"></use></svg>
+                                <span id="progress-label">Compressing images…</span>
+                            </span>
                             <span id="progress-count" class="mono" aria-live="polite" aria-atomic="true"></span>
                         </div>
                         <progress id="progress" value="0" max="1" aria-label="Compression progress"></progress>
@@ -243,7 +519,10 @@
                 <section class="panel queue" aria-labelledby="queue-heading">
                     <div class="panel-head queue-head">
                         <div>
-                            <h2 id="queue-heading">Images</h2>
+                            <h2 id="queue-heading">
+                                <svg class="icon panel-icon" aria-hidden="true" focusable="false"><use href="#icon-image"></use></svg>
+                                Images
+                            </h2>
                             <p id="queue-count" class="panel-sub">0 images</p>
                         </div>
                         <button id="add-button" class="btn btn-secondary btn-small" type="button">
@@ -252,11 +531,17 @@
                         </button>
                     </div>
 
-                    <p id="queue-notice" class="queue-notice" hidden></p>
+                    <p id="queue-notice" class="queue-notice" hidden>
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-alert"></use></svg>
+                        <span id="queue-notice-text" class="queue-notice-text"></span>
+                    </p>
 
                     <div id="summary" class="summary" hidden>
                         <div>
-                            <p id="summary-text" class="summary-text"></p>
+                            <p class="summary-text">
+                                <svg class="icon summary-icon" aria-hidden="true" focusable="false"><use href="#icon-check"></use></svg>
+                                <span id="summary-text"></span>
+                            </p>
                             <p id="summary-sub" class="summary-sub"></p>
                         </div>
                         <button id="download-all" class="btn btn-primary btn-small" type="button" disabled>
@@ -268,6 +553,67 @@
                     <ul id="file-list" class="file-list" aria-label="Selected images"></ul>
                 </section>
             </div>
+        </section>
+
+        <section id="what-is-pixelshrink" class="about wrap" aria-labelledby="about-heading">
+            <p class="section-kicker">About the tool</p>
+            <h2 id="about-heading">What is PixelShrink?</h2>
+            <p class="about-lede">PixelShrink is a free, local-first image compressor for JPEG, PNG, WebP and GIF files. It runs in your browser, keeps your images on your device, and does not require an account, upload, or file limit.</p>
+            <div class="about-body">
+                <p>Most online compressors send your image to a server to process it. PixelShrink uses the browser's File API and Canvas instead. The file is decoded, resized if you ask, and re-encoded in the tab. Nothing is uploaded, and there is no analytics or advertising code on the page.</p>
+                <p>Compression results depend on the image, dimensions, format, and quality. A photograph usually gets smaller as JPEG or WebP; a screenshot may stay smaller as PNG; a file that is already optimized can grow when re-encoded. PixelShrink compares the result with the original and keeps the original when no resize or format change was requested and the result would be larger.</p>
+                <p>Read the <a href="./guide.html">image compression guide</a> for a practical explanation of formats, quality, resizing, and privacy.</p>
+            </div>
+            <ul class="fact-list">
+                <li><strong>Input:</strong> JPEG, PNG, WebP and GIF files.</li>
+                <li><strong>Output:</strong> JPEG, PNG or WebP; GIF becomes a still PNG by default.</li>
+                <li><strong>Privacy:</strong> no uploads, accounts, analytics, ads, or third-party scripts.</li>
+                <li><strong>Limits:</strong> no artificial file-count or file-size limits; browser memory and canvas limits apply.</li>
+                <li><strong>Offline:</strong> works after the first load via a service worker.</li>
+                <li><strong>Source:</strong> MIT licensed and available on <a href="https://github.com/sandeshwar/image-compressor" target="_blank" rel="noopener noreferrer">GitHub</a>.</li>
+            </ul>
+
+            <h3 id="formats" class="about-subheading">Which format should I choose?</h3>
+            <div class="table-wrap">
+                <table class="format-table">
+                    <caption>Common image formats and how PixelShrink handles them</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Format</th>
+                            <th scope="col">Best for</th>
+                            <th scope="col">Transparency</th>
+                            <th scope="col">PixelShrink behaviour</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">JPEG</th>
+                            <td>Photographs and complex images</td>
+                            <td>No</td>
+                            <td>Lossy; quality applies; transparent areas become white</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">PNG</th>
+                            <td>Screenshots, graphics, lossless output</td>
+                            <td>Yes</td>
+                            <td>Lossless; the quality slider does not apply</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">WebP</th>
+                            <td>Modern web photos and graphics</td>
+                            <td>Yes</td>
+                            <td>Quality applies; transparency is preserved</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">GIF</th>
+                            <td>Simple animation input</td>
+                            <td>Limited</td>
+                            <td>First frame only; saved as PNG by default</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="updated">Last updated 1 November 2026 · <a class="link-with-icon" href="./guide.html"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-book"></use></svg>Read the full guide</a></p>
         </section>
 
         <section id="how-it-works" class="strip wrap" aria-labelledby="how-heading">
@@ -289,10 +635,11 @@
                     <p>Download images individually or as one ZIP. Everything is generated on your device.</p>
                 </li>
             </ol>
+            <p class="section-more"><a class="link-with-icon" href="./guide.html"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-book"></use></svg>Read the full image compression guide</a></p>
         </section>
 
-        <section class="faq wrap" aria-labelledby="faq-heading">
-            <h2 id="faq-heading">Questions</h2>
+        <section id="faq" class="faq wrap" aria-labelledby="faq-heading">
+            <h2 id="faq-heading">Frequently asked questions</h2>
 
             <details>
                 <summary>Are my images uploaded?</summary>
@@ -315,8 +662,23 @@
             </details>
 
             <details>
+                <summary>Does compressing an image reduce quality?</summary>
+                <p>Lossy formats such as JPEG and WebP can discard detail as the quality setting drops. PNG output is lossless, so the quality slider does not apply. Compare the result at its intended display size before deleting the original; the <a href="./guide.html#quality-loss">guide explains the trade-offs</a>.</p>
+            </details>
+
+            <details>
+                <summary>Which format should I choose?</summary>
+                <p>Use JPEG for photographs when transparency is not needed, PNG for screenshots or graphics that need lossless output, and WebP when you want a smaller modern file with optional transparency. GIF input becomes a still PNG. The <a href="#formats">format guide</a> above and the <a href="./guide.html#formats">full guide</a> explain the details.</p>
+            </details>
+
+            <details>
                 <summary>Does it work offline?</summary>
                 <p>Yes, after the first visit. A service worker caches the app itself, so compression can run without a network. The service worker only stores this site's files; it never caches or transmits your images.</p>
+            </details>
+
+            <details>
+                <summary>Do I need an account or an install?</summary>
+                <p>No. PixelShrink runs in a modern browser with no account, sign-up, or installation. It works on desktop and mobile, and you can add images with drag and drop, the file picker, or paste.</p>
             </details>
 
             <details>
@@ -336,6 +698,8 @@
                 <p class="footer-note">Local image compression. No uploads. No analytics. No ads.</p>
             </div>
             <nav class="footer-links" aria-label="Footer">
+                <a href="./">Compressor</a>
+                <a href="./guide.html">Guide</a>
                 <a href="./privacy.html">Privacy</a>
                 <a href="https://github.com/sandeshwar/image-compressor" target="_blank" rel="noopener noreferrer">Source code</a>
                 <a href="https://github.com/sandeshwar/image-compressor/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT license</a>
@@ -363,7 +727,10 @@
                 <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-download"></use></svg>
                 Download
             </button>
-            <button class="btn btn-secondary" type="button" data-close>Close</button>
+            <button class="btn btn-secondary" type="button" data-close>
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-x"></use></svg>
+                Close
+            </button>
         </div>
     </dialog>
 
@@ -378,7 +745,10 @@
             <div class="file-main">
                 <div class="file-name-line">
                     <p class="file-name"></p>
-                    <span class="file-status">Queued</span>
+                    <span class="file-status">
+                        <svg class="icon file-status-icon" aria-hidden="true" focusable="false"><use href="#icon-clock"></use></svg>
+                        <span class="status-label">Queued</span>
+                    </span>
                 </div>
                 <p class="file-meta"></p>
                 <p class="file-error" hidden></p>
@@ -390,12 +760,15 @@
             <div class="file-actions">
                 <button type="button" class="icon-btn" data-action="preview" aria-label="Preview" title="Preview" disabled>
                     <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-eye"></use></svg>
+                    <span class="action-label">Preview</span>
                 </button>
                 <button type="button" class="icon-btn" data-action="download" aria-label="Download" title="Download" disabled>
                     <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-download"></use></svg>
+                    <span class="action-label">Download</span>
                 </button>
                 <button type="button" class="icon-btn icon-btn-danger" data-action="remove" aria-label="Remove" title="Remove">
                     <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-trash"></use></svg>
+                    <span class="action-label">Remove</span>
                 </button>
             </div>
         </li>

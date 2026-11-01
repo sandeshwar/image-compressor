@@ -13,8 +13,10 @@ A local-first image compressor that runs entirely in the browser. No uploads, no
 - Shows per-file status, errors, dimensions, and savings.
 - Downloads individual images or a ZIP of all results.
 - Includes a local preview dialog, cancelable progress, and keyboard-friendly controls.
+- Pairs inline SVG icons with visible text labels for actions, settings, statuses, and row controls.
 - Works offline after the first visit through a service worker.
 - Has no third-party requests, no fonts or icons from CDNs, and no runtime dependencies.
+- Includes a substantive image compression guide with format and quality guidance, sources, and a citation line.
 
 If re-encoding would make a file larger and no resize or format change was requested, PixelShrink keeps the original bytes and labels the row **original kept**.
 
@@ -22,9 +24,22 @@ If re-encoding would make a file larger and no resize or format change was reque
 
 The app is a static page. Image data never leaves the browser because there is no upload endpoint, no server-side processing, and no analytics or advertising code. The page has a strict Content Security Policy, uses no inline executable JavaScript or inline styles (the only inline script block is non-executable JSON-LD metadata), and contains no externally hosted resources.
 
-The interface is intentionally flat: system fonts, solid surfaces, one accent color plus semantic warning and error colors, and no gradients. This keeps the page small and fast, and keeps the design focused on the tool.
+The interface is intentionally flat: system fonts, solid surfaces, one accent color plus semantic warning and error colors, and no gradients. Icons are inline SVG, paired with visible text where space allows; icon-only controls keep accessible names. No icon font or external icon service is used. This keeps the page small and fast, and keeps the design focused on the tool.
 
 Files that are not supported are skipped instead of silently disappearing: the queue shows a visible notice naming them. Files that cannot be decoded get their own failed row and do not stop the rest of the batch.
+
+## Search, social, and AI discovery
+
+The site is built for conventional search, answer engines, and generative engines without adding third-party tracking:
+
+- Unique titles, descriptions, canonicals, Open Graph tags, Twitter cards, and `en-GB` hreflang links on indexable pages.
+- A visible answer-first homepage section, a format table, a richer FAQ, and a long-form [guide.html](guide.html).
+- A JSON-LD `@graph` with `Organization`, `WebSite`, `WebPage`, `WebApplication`, `HowTo`, `FAQPage`, `TechArticle`, and `BreadcrumbList` nodes. There are no fabricated ratings or reviews.
+- [llms.txt](llms.txt) with concise entity facts, limitations, citations, and canonical links for language models.
+- `robots.txt` that allows major search and AI crawlers and points to the sitemap and `llms.txt`.
+- `sitemap.xml` covering the compressor, the guide, and the privacy policy.
+
+The AI crawler allowances are deliberate. If you want to restrict AI training or citation, change the specific `User-agent` groups in `robots.txt`; the rest of the site does not depend on them.
 
 ## Run locally
 
@@ -72,8 +87,12 @@ GitHub Pages does not allow custom response headers. The page-level CSP in each 
 
 ```text
 index.html          Compressor page
+guide.html          Image compression guide (SEO/GEO/AEO content)
 privacy.html        Privacy policy
 404.html            Custom not-found page
+llms.txt            Concise LLM-facing facts and canonical links
+robots.txt          Search and AI crawler policy; sitemap reference
+sitemap.xml         Home, guide, and privacy URLs
 styles.css          Flat responsive design system
 script.js           UI state, file handling, compression flow
 lib.js              Pure helpers: sizing, filenames, CRC32, ZIP writer

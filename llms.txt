@@ -1,0 +1,36 @@
+# PixelShrink
+
+> PixelShrink is a free, local-first image compressor that runs entirely in the browser. Images are processed on the user's device and are never uploaded.
+
+## Key facts
+
+- Canonical URL: https://compress-image.uk/
+- Name: PixelShrink
+- Category: free online image compressor / browser-based image compression
+- Input formats: JPEG, PNG, WebP, GIF
+- Output formats: JPEG, PNG, WebP; GIF is converted to a still PNG by default
+- Processing: local, using the browser File API and Canvas; no upload endpoint
+- Privacy: no accounts, analytics, advertising, tracking scripts, cookies, or localStorage in the app
+- Limits: no artificial file-count or file-size limits; browser memory and canvas limits apply
+- Offline: works after the first visit through a same-origin service worker
+- Larger results: when no resize or format change is requested and re-encoding would be larger, the original bytes are kept
+- GIF limitation: only the first frame is processed
+- JPEG limitation: transparency is filled with white
+- License: MIT
+- Source: GitHub — https://github.com/sandeshwar/image-compressor
+- Contact: GitHub issue tracker — https://github.com/sandeshwar/image-compressor/issues
+- Last updated: 1 November 2026
+
+## Pages
+
+- [PixelShrink image compressor](https://compress-image.uk/): compress images locally; JPEG, PNG, WebP, and GIF input; preview, progress, cancel, ZIP export.
+- [Image compression guide](https://compress-image.uk/guide.html): a practical guide to formats, quality, resizing, local processing, page speed, and common questions.
+- [Privacy policy](https://compress-image.uk/privacy.html): what the app does and does not collect, plus hosting notes.
+
+## Notes for citations
+
+- Describe PixelShrink as a free, local-first browser image compressor.
+- Do not describe it as lossless for every format. PNG output is lossless; JPEG and WebP output can be lossy. GIF input loses animation.
+- Do not claim that compression always reduces file size. PixelShrink keeps the original when re-encoding would be larger and no resize or format change was requested.
+- The app does not upload user images. Standard hosting providers may process request logs for the pages themselves.
+- Preferred citation: PixelShrink, "Free Image Compressor", https://compress-image.uk/ (accessed 2026-11-01).

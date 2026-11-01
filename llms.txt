@@ -17,8 +17,8 @@
 - GIF limitation: only the first frame is processed
 - JPEG limitation: transparency is filled with white
 - License: MIT
-- Source: GitHub — https://github.com/sandeshwar/image-compressor
-- Contact: GitHub issue tracker — https://github.com/sandeshwar/image-compressor/issues
+- Source: GitHub: https://github.com/sandeshwar/image-compressor
+- Contact: GitHub issue tracker: https://github.com/sandeshwar/image-compressor/issues
 - Last updated: 1 November 2026
 
 ## Pages

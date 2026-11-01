@@ -1,5 +1,5 @@
 {
-  "name": "PixelShrink — Local image compressor",
+  "name": "PixelShrink: Local image compressor",
   "short_name": "PixelShrink",
   "description": "Compress images on your device. No uploads, accounts, or file limits.",
   "id": "./",

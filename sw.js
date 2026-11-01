@@ -1,5 +1,5 @@
 // App-shell cache for PixelShrink. Same-origin files only; images are never cached here.
-const CACHE_NAME = 'pixelshrink-v7';
+const CACHE_NAME = 'pixelshrink-v8';
 
 const PRECACHE = [
     './',
@@ -7,11 +7,11 @@ const PRECACHE = [
     './privacy.html',
     './guide.html',
     './404.html',
-    './styles.css?v=20261105',
-    './script.js?v=20261105',
-    './lib.js?v=20261105',
-    './register-sw.js?v=20261105',
-    './secure.js?v=20261105',
+    './styles.css?v=20261106',
+    './script.js?v=20261106',
+    './lib.js?v=20261106',
+    './register-sw.js?v=20261106',
+    './secure.js?v=20261106',
     './manifest.json',
     './favicon.svg',
     './favicon.ico',

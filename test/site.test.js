@@ -417,6 +417,13 @@ test('primary controls pair icons with visible text labels', function () {
     assert.ok(script.includes("refs.statusLabel.textContent = label"), 'row status labels are not wired');
 });
 
+test('copy and metadata contain no em dash characters', function () {
+    const files = pages.concat(['manifest.json', 'llms.txt', 'robots.txt', 'sitemap.xml', 'script.js', 'styles.css', 'README.md']);
+    files.forEach(function (file) {
+        assert.equal(read(file).includes(String.fromCharCode(0x2014)), false, file + ' contains an em dash');
+    });
+});
+
 test('each page has a single h1', function () {
     pages.forEach(function (page) {
         const matches = read(page).match(/<h1\b/gi) || [];

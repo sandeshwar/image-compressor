@@ -12,7 +12,7 @@ import {
     qualityRatio,
     resolveOutputType,
     uniqueFilename
-} from './lib.js?v=20261105';
+} from './lib.js?v=20261106';
 
 const EXTENSION_TYPES = new Map([
     ['jpg', 'image/jpeg'],
@@ -411,7 +411,7 @@ function createRow(item) {
     statusIcon.setAttribute('href', '#icon-clock');
     error.hidden = true;
     original.textContent = formatBytes(item.file.size);
-    result.textContent = '—';
+    result.textContent = 'Pending';
     saving.textContent = '';
 
     preview.setAttribute('aria-label', 'Preview ' + item.name);
@@ -484,7 +484,7 @@ function updateRow(item) {
 
     refs.meta.textContent = formatItemMeta(item);
     refs.original.textContent = formatBytes(item.file.size);
-    refs.result.textContent = item.result ? formatBytes(item.result.size) : '—';
+    refs.result.textContent = item.result ? formatBytes(item.result.size) : (item.status === 'error' ? 'Failed' : 'Pending');
     refs.error.hidden = !item.error;
     refs.error.textContent = item.error || '';
 

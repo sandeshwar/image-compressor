@@ -1,29 +1,73 @@
-// Service Worker for PWA functionality
-const CACHE_NAME = 'pixelshrink-v1';
-const urlsToCache = [
-  '/',
-  '/index.html',
-  '/styles.css',
-  '/script.js',
-  '/privacy.html',
-  'https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css',
-  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
+// App-shell cache for PixelShrink. Same-origin files only; images are never cached here.
+const CACHE_NAME = 'pixelshrink-v5';
+
+const PRECACHE = [
+    './',
+    './index.html',
+    './privacy.html',
+    './404.html',
+    './styles.css?v=20261103',
+    './script.js?v=20261103',
+    './lib.js?v=20261103',
+    './register-sw.js?v=20261103',
+    './secure.js?v=20261103',
+    './manifest.json',
+    './favicon.svg',
+    './favicon.ico',
+    './favicon-32.png',
+    './apple-touch-icon.png',
+    './icon-192.png',
+    './icon-512.png',
+    './icon-maskable-512.png'
 ];
 
-self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => cache.addAll(urlsToCache))
-  );
+self.addEventListener('install', function (event) {
+    event.waitUntil((async function () {
+        const cache = await caches.open(CACHE_NAME);
+        await cache.addAll(PRECACHE);
+        await self.skipWaiting();
+    })());
 });
 
-self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request)
-      .then((response) => {
-        // Return cached version or fetch from network
-        return response || fetch(event.request);
-      }
-    )
-  );
+self.addEventListener('activate', function (event) {
+    event.waitUntil((async function () {
+        const keys = await caches.keys();
+        await Promise.all(keys.filter(function (key) {
+            return key !== CACHE_NAME;
+        }).map(function (key) {
+            return caches.delete(key);
+        }));
+        await self.clients.claim();
+    })());
+});
+
+self.addEventListener('fetch', function (event) {
+    const request = event.request;
+    if (request.method !== 'GET') return;
+
+    const url = new URL(request.url);
+    if (url.origin !== self.location.origin) return;
+
+    event.respondWith((async function () {
+        try {
+            const response = await fetch(request);
+            if (response && response.ok) {
+                const cache = await caches.open(CACHE_NAME);
+                cache.put(request, response.clone()).catch(function () {
+                    // A failed cache write should not break the response.
+                });
+            }
+            return response;
+        } catch (error) {
+            const cached = await caches.match(request);
+            if (cached) return cached;
+
+            if (request.mode === 'navigate') {
+                const shell = await caches.match('./index.html');
+                if (shell) return shell;
+            }
+
+            throw error;
+        }
+    })());
 });

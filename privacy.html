@@ -1,210 +1,125 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - PixelShrink</title>
-    <meta name="description" content="Privacy Policy for PixelShrink - Learn how we protect your data and privacy.">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' blob:; font-src 'self'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; worker-src 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'">
+    <meta name="referrer" content="no-referrer">
+    <meta name="color-scheme" content="light dark">
+
+    <title>Privacy — PixelShrink</title>
+    <meta name="description" content="How PixelShrink handles privacy: images stay on your device, with no uploads, accounts, analytics, ads, or tracking.">
+    <link rel="canonical" href="https://compress-image.uk/privacy.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="PixelShrink">
+    <meta property="og:title" content="Privacy — PixelShrink">
+    <meta property="og:description" content="Images stay on your device. No uploads, accounts, analytics, ads, or tracking.">
+    <meta property="og:url" content="https://compress-image.uk/privacy.html">
+    <meta property="og:image" content="https://compress-image.uk/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Privacy — PixelShrink">
+    <meta name="twitter:description" content="Images stay on your device. No uploads, accounts, analytics, ads, or tracking.">
+    <meta name="twitter:image" content="https://compress-image.uk/og-image.png">
+
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f6f2">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#101211">
+
+    <script src="./secure.js?v=20261103"></script>
+    <link rel="icon" href="./favicon.ico" sizes="any">
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="stylesheet" href="./styles.css?v=20261103">
+    <script src="./register-sw.js?v=20261103" defer></script>
 </head>
 <body>
-    <!-- Floating Background Elements -->
-    <div class="floating-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-    </div>
+    <a class="skip-link" href="#main">Skip to content</a>
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 glass-container border-0 rounded-none">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-4">
-                    <div class="w-10 h-10 bg-gradient-to-r from-purple-400 to-pink-400 rounded-xl flex items-center justify-center">
-                        <i class="fas fa-compress text-white"></i>
-                    </div>
-                    <h1 class="text-2xl font-bold text-glow">PixelShrink</h1>
-                </div>
-                <div class="flex items-center space-x-6">
-                    <a href="index.html" class="text-white/80 hover:text-white transition-colors font-medium">
-                        <i class="fas fa-arrow-left mr-2"></i>
-                        Back to Tool
-                    </a>
-                </div>
-            </div>
+    <header class="site-header">
+        <div class="wrap header-inner">
+            <a class="brand" href="./" aria-label="PixelShrink home">
+                <svg class="brand-mark" aria-hidden="true" focusable="false" viewBox="0 0 32 32">
+                    <rect width="32" height="32" rx="7" fill="currentColor"></rect>
+                    <path d="M8 16h6M11 13l3 3-3 3M24 16h-6M21 13l-3 3 3 3" fill="none" stroke="var(--accent-ink)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                <span>PixelShrink</span>
+            </a>
+            <nav class="site-nav" aria-label="Primary">
+                <a href="./">Compressor</a>
+                <a href="./privacy.html" aria-current="page">Privacy</a>
+                <a href="https://github.com/sandeshwar/image-compressor" target="_blank" rel="noopener noreferrer">Source</a>
+            </nav>
         </div>
-    </nav>
+    </header>
 
-    <!-- Main Content -->
-    <main class="pt-24 pb-12">
-        <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto">
-                <div class="glass-container p-8">
-                    <h2 class="text-4xl font-bold text-glow mb-8">
-                        <i class="fas fa-shield-alt mr-4 text-green-400"></i>
-                        Your Privacy is Our Priority
-                    </h2>
-                    <p class="text-white/80 text-lg mb-8 leading-relaxed">
-                        At PixelShrink, we are committed to protecting your privacy and ensuring the security of your data. 
-                        This privacy policy explains how we handle your information when you use our revolutionary image compression tool.
-                    </p>
-                    <p class="text-white/60 mb-12 text-sm">Last updated: January 2024</p>
+    <main id="main" class="page wrap">
+        <header class="page-header">
+            <p class="eyebrow">Privacy</p>
+            <h1>Your images stay yours.</h1>
+            <p class="page-lede">PixelShrink is built to do one job without collecting anything about you or your files.</p>
+            <p class="updated">Last updated: 1 November 2026</p>
+        </header>
 
-                    <section class="mb-12">
-                        <h3 class="text-2xl font-bold text-white mb-6">
-                            <i class="fas fa-lock text-blue-400 mr-3"></i>
-                            Information We Don't Collect
-                        </h3>
-                        <div class="bg-green-500/10 border border-green-400/30 rounded-xl p-6 mb-6">
-                            <p class="text-green-400 font-bold text-lg mb-3"> Your images NEVER leave your device</p>
-                            <p class="text-white/80 leading-relaxed">
-                                All image compression happens locally in your browser using HTML5 Canvas API. 
-                                Your images are never uploaded to our servers or stored anywhere.
-                            </p>
-                        </div>
-                        <ul class="list-disc list-inside text-white/80 space-y-3 ml-4">
-                            <li>We don't collect personal information</li>
-                            <li>We don't require registration or accounts</li>
-                            <li>We don't track which images you compress</li>
-                            <li>We don't have access to your files</li>
-                            <li>We don't store compression history</li>
-                        </ul>
-                    </section>
-
-                    <section class="mb-12">
-                        <h3 class="text-2xl font-bold text-white mb-6">
-                            <i class="fas fa-chart-line text-purple-400 mr-3"></i>
-                            Analytics and Advertising
-                        </h3>
-                        <p class="text-white/80 mb-6 leading-relaxed">
-                            We use the following third-party services to improve our service and display relevant advertisements:
-                        </p>
-                        
-                        <div class="space-y-6">
-                            <div class="glass-container p-6">
-                                <h4 class="font-bold text-white mb-3 text-lg">Google Analytics</h4>
-                                <p class="text-white/70 leading-relaxed">
-                                    We use Google Analytics to understand how visitors interact with our website. 
-                                    This helps us improve the user experience and optimize our tool. Google Analytics may collect:
-                                </p>
-                                <ul class="list-disc list-inside text-white/60 mt-3 ml-4 space-y-2">
-                                    <li>Pages visited and time spent</li>
-                                    <li>Browser type and version</li>
-                                    <li>Device type and operating system</li>
-                                    <li>Approximate geographic location (country/city level)</li>
-                                </ul>
-                            </div>
-                            <div class="glass-container p-6">
-                                <h4 class="font-bold text-white mb-3 text-lg">Google AdSense</h4>
-                                <p class="text-white/70 leading-relaxed">
-                                    We use Google AdSense to display advertisements. AdSense may use cookies and 
-                                    similar technologies to show ads based on your interests and previous visits to our site. 
-                                    You can opt out of personalized advertising by visiting Google's Ads Settings.
-                                </p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section class="mb-12">
-                        <h3 class="text-2xl font-bold text-white mb-6">
-                            <i class="fas fa-cookie text-yellow-400 mr-3"></i>
-                            Cookies and Local Storage
-                        </h3>
-                        <p class="text-white/80 mb-6 leading-relaxed">
-                            Our website may use cookies and local storage for the following purposes:
-                        </p>
-                        <ul class="list-disc list-inside text-white/80 space-y-3 ml-4">
-                            <li>Analytics and advertising (Google Analytics, Google AdSense)</li>
-                            <li>Remembering your compression preferences</li>
-                            <li>Improving user experience</li>
-                            <li>Essential website functionality</li>
-                        </ul>
-                        <p class="text-white/60 mt-6 leading-relaxed">
-                            You can control cookies through your browser settings. Disabling cookies may affect 
-                            some features of our website.
-                        </p>
-                    </section>
-
-                    <section class="mb-12">
-                        <h3 class="text-2xl font-bold text-white mb-6">
-                            <i class="fas fa-globe text-cyan-400 mr-3"></i>
-                            Third-Party Links
-                        </h3>
-                        <p class="text-white/80 leading-relaxed">
-                            Our website may contain links to third-party websites. We are not responsible for 
-                            the privacy practices of these external sites. Please review their privacy policies 
-                            before providing personal information.
-                        </p>
-                    </section>
-
-                    <section class="mb-12">
-                        <h3 class="text-2xl font-bold text-white mb-6">
-                            <i class="fas fa-shield-virus text-red-400 mr-3"></i>
-                            Data Security
-                        </h3>
-                        <p class="text-white/80 leading-relaxed">
-                            Since all image processing happens locally in your browser, there is no risk of 
-                            data interception during transmission to our servers. We implement industry-standard 
-                            security measures for our website infrastructure.
-                        </p>
-                    </section>
-
-                    <section class="mb-12">
-                        <h3 class="text-2xl font-bold text-white mb-6">
-                            <i class="fas fa-child text-pink-400 mr-3"></i>
-                            Children's Privacy
-                        </h3>
-                        <p class="text-white/80 leading-relaxed">
-                            Our service is not directed to children under 13. We do not knowingly collect 
-                            personal information from children under 13. If you believe we have collected 
-                            such information, please contact us immediately.
-                        </p>
-                    </section>
-
-                    <section class="mb-12">
-                        <h3 class="text-2xl font-bold text-white mb-6">
-                            <i class="fas fa-sync text-orange-400 mr-3"></i>
-                            Changes to This Policy
-                        </h3>
-                        <p class="text-white/80 leading-relaxed">
-                            We may update this privacy policy from time to time. We will notify you of any 
-                            changes by posting the new policy on this page and updating the "Last updated" date.
-                        </p>
-                    </section>
-
-                    <!-- <section class="mb-12">
-                        <h3 class="text-2xl font-bold text-white mb-6">
-                            <i class="fas fa-envelope text-indigo-400 mr-3"></i>
-                            Contact Us
-                        </h3>
-                        <p class="text-white/80 mb-6 leading-relaxed">
-                            If you have any questions about this Privacy Policy, please contact us:
-                        </p>
-                        <div class="glass-container p-6">
-                            <p class="text-white/80">
-                                <strong class="text-white">Email:</strong> privacy@pixelshrink.com<br>
-                                <strong class="text-white">Website:</strong> https://sandeshwar.github.io/image-compressor
-                            </p>
-                        </div>
-                    </section> -->
-                </div>
+        <article class="prose">
+            <div class="callout">
+                <p><strong>The short version:</strong> images are read and compressed in your browser. They are never uploaded. There are no accounts, no analytics, no ads, and no third-party scripts.</p>
             </div>
-        </div>
+
+            <h2>What we do not collect</h2>
+            <ul>
+                <li>Your images, filenames, or image metadata.</li>
+                <li>An account, email address, or profile.</li>
+                <li>Analytics, advertising identifiers, or cross-site tracking data.</li>
+                <li>Compression history or settings. Nothing is saved between visits.</li>
+            </ul>
+
+            <h2>What happens on your device</h2>
+            <p>When you add an image, the browser reads the file directly from your device. PixelShrink draws it to a local canvas, encodes the result in memory, and offers it back to you as a download. The image data does not pass through a server at any point.</p>
+
+            <h2>Network requests</h2>
+            <p>The page loads only files from this site: HTML, CSS, JavaScript, icons, and the web app manifest. There are no fonts, scripts, or styles from third-party domains. The app contains no upload or fetch code, and its Content Security Policy sets <code>connect-src 'none'</code> for the page.</p>
+            <p>The service worker may fetch this site's own files so the tool can work offline. It does not cache or transmit your images.</p>
+
+            <h2>Cookies and local storage</h2>
+            <p>PixelShrink does not set cookies and does not use <code>localStorage</code> or <code>sessionStorage</code>. A service worker cache may hold this site's app files on your device so it can open offline; you can remove it at any time by clearing site data in your browser.</p>
+
+            <h2>Hosting</h2>
+            <p>This site is served by GitHub Pages behind Cloudflare. Those providers may process standard request information, such as an IP address and user agent, as part of normal hosting and security operations. PixelShrink does not have an analytics system and does not receive a report of your activity from those providers. See the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">GitHub privacy statement</a> and the <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare privacy policy</a>.</p>
+
+            <h2>Your choices</h2>
+            <p>Because there is no account and no stored profile, there is nothing to delete on our side. You can clear the service worker cache and any downloaded files through your browser and file system.</p>
+
+            <h2>Contact</h2>
+            <p>Questions or bug reports can be opened in the <a href="https://github.com/sandeshwar/image-compressor/issues" target="_blank" rel="noopener noreferrer">project issue tracker</a>. For a security-sensitive report, use GitHub's private vulnerability reporting for the repository if it is available, and avoid posting sensitive details publicly.</p>
+
+            <h2>Changes</h2>
+            <p>If this policy changes, the update date at the top of this page will change. The site's source and history are public on GitHub.</p>
+
+            <h2>License</h2>
+            <p>PixelShrink is released under the MIT license. You can inspect, self-host, or modify it.</p>
+        </article>
     </main>
 
-    <!-- Footer -->
-    <footer class="glass-container border-0 rounded-none">
-        <div class="container mx-auto px-6 py-8">
-            <div class="text-center text-white/80">
-                <p class="mb-4"> 2024 PixelShrink. Revolutionary image compression technology.</p>
-                <div class="flex justify-center space-x-6">
-                    <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
-                    <span class="text-white/40">|</span>
-                    <a href="index.html" class="hover:text-white transition-colors">Image Compressor Tool</a>
-                </div>
+    <footer class="site-footer">
+        <div class="wrap footer-inner">
+            <div>
+                <a class="brand brand-small" href="./" aria-label="PixelShrink home">
+                    <svg class="brand-mark" aria-hidden="true" focusable="false" viewBox="0 0 32 32">
+                        <rect width="32" height="32" rx="7" fill="currentColor"></rect>
+                        <path d="M8 16h6M11 13l3 3-3 3M24 16h-6M21 13l-3 3 3 3" fill="none" stroke="var(--accent-ink)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                    <span>PixelShrink</span>
+                </a>
+                <p class="footer-note">Local image compression. No uploads. No analytics. No ads.</p>
             </div>
+            <nav class="footer-links" aria-label="Footer">
+                <a href="./">Compressor</a>
+                <a href="./privacy.html">Privacy</a>
+                <a href="https://github.com/sandeshwar/image-compressor" target="_blank" rel="noopener noreferrer">Source code</a>
+                <a href="https://github.com/sandeshwar/image-compressor/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT license</a>
+            </nav>
+            <p class="footer-copy">© 2026 PixelShrink</p>
         </div>
     </footer>
 </body>

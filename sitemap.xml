@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://compress-image.uk/</loc>
-        <lastmod>2025-01-07</lastmod>
-        <changefreq>weekly</changefreq>
+        <lastmod>2026-11-01</lastmod>
+        <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://compress-image.uk/privacy.html</loc>
-        <lastmod>2025-01-07</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.3</priority>
+        <lastmod>2026-11-01</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
     </url>
 </urlset>

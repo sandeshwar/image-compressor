@@ -1,435 +1,404 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO Meta Tags -->
-    <title>PixelShrink - Free Online Image Compressor | Reduce Image Size Without Quality Loss</title>
-    <meta name="description" content="Compress images online for free with PixelShrink. Revolutionary AI-powered compression reduces file sizes by up to 80% while maintaining stunning quality. No upload required - complete privacy protection.">
-    <meta name="keywords" content="image compressor, image compression, reduce image size, optimize images, photo compressor, jpg compressor, png compressor, webp converter, free image optimizer, online image compression">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' blob:; font-src 'self'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; worker-src 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'">
+    <meta name="referrer" content="no-referrer">
+    <meta name="color-scheme" content="light dark">
+
+    <title>PixelShrink — Compress images locally in your browser</title>
+    <meta name="description" content="Compress JPEG, PNG, and WebP images on your device. No uploads, no accounts, no limits. Free forever.">
     <meta name="author" content="PixelShrink">
-    <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://compress-image.uk/">
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="PixelShrink - Free Online Image Compressor">
-    <meta property="og:description" content="Compress images online for free. Reduce file sizes by up to 80% without quality loss. No uploads required - complete privacy.">
+
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="PixelShrink">
+    <meta property="og:title" content="PixelShrink — Compress images locally">
+    <meta property="og:description" content="Private, local image compression with no uploads, accounts, or limits.">
     <meta property="og:url" content="https://compress-image.uk/">
-    <meta property="og:image" content="https://compress-image.uk/og-image.jpg">
+    <meta property="og:image" content="https://compress-image.uk/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:site_name" content="PixelShrink">
-    <meta property="og:locale" content="en_US">
-    
-    <!-- Twitter Card Meta Tags -->
+    <meta property="og:image:alt" content="PixelShrink — compress images without uploading them.">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="PixelShrink - Free Image Compression">
-    <meta name="twitter:description" content="Compress images online for free with privacy-first approach. No uploads required.">
-    <meta name="twitter:image" content="https://compress-image.uk/twitter-image.jpg">
-    <meta name="twitter:creator" content="@pixelshrink">
-    <meta name="twitter:site" content="@pixelshrink">
-    
-    <!-- Additional SEO -->
-    <meta name="theme-color" content="#667eea">
-    <meta name="application-name" content="PixelShrink">
-    <meta name="apple-mobile-web-app-title" content="PixelShrink">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="/manifest.json">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23667eea'/%3E%3Ctext x='50' y='50' font-size='60' text-anchor='middle' dy='.3em' fill='white'%3E📸%3C/text%3E%3C/svg%3E">
-    
-    <!-- Preload Critical Resources -->
-    <link rel="preload" href="/styles.css" as="style">
-    <link rel="preload" href="/script.js" as="script">
-    
-    <!-- DNS Prefetch for External Resources -->
-    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
-    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
-    <link rel="dns-prefetch" href="//www.googletagmanager.com">
-    <link rel="dns-prefetch" href="//pagead2.googlesyndication.com">
-    
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LZ3449CZV0"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-LZ3449CZV0');
-    </script>
-    
-    <!-- Structured Data for SEO -->
+    <meta name="twitter:title" content="PixelShrink — Compress images locally">
+    <meta name="twitter:description" content="Private, local image compression with no uploads, accounts, or limits.">
+    <meta name="twitter:image" content="https://compress-image.uk/og-image.png">
+
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f6f2">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#101211">
+
+    <script src="./secure.js?v=20261103"></script>
+    <link rel="icon" href="./favicon.ico" sizes="any">
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="stylesheet" href="./styles.css?v=20261103">
+
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
         "name": "PixelShrink",
-        "description": "Free online image compressor that reduces file sizes while maintaining quality. No uploads required for complete privacy.",
+        "description": "A local-first image compressor that runs entirely in the browser. Images are never uploaded.",
         "url": "https://compress-image.uk/",
-        "applicationCategory": "GraphicsApplication",
+        "applicationCategory": "MultimediaApplication",
         "operatingSystem": "Any",
-        "browserRequirements": "HTML5, JavaScript",
+        "browserRequirements": "A modern browser with JavaScript and Canvas support",
+        "isAccessibleForFree": true,
         "offers": {
             "@type": "Offer",
             "price": "0",
-            "priceCurrency": "USD"
+            "priceCurrency": "GBP"
         },
+        "license": "https://opensource.org/licenses/MIT",
         "featureList": [
-            "Image compression without quality loss",
-            "Privacy-first processing (no uploads)",
-            "Multiple format support (JPEG, PNG, WebP, GIF)",
-            "Batch compression",
-            "Custom quality settings",
-            "Size reduction options"
-        ],
-        "screenshot": "https://compress-image.uk/og-image.jpg",
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "ratingCount": "1000"
-        }
+            "On-device image compression",
+            "No uploads, accounts, analytics, or ads",
+            "JPEG, PNG, WebP, and GIF input",
+            "Batch processing and ZIP export",
+            "No artificial file-count or file-size limits",
+            "Free and open source"
+        ]
     }
     </script>
-    
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6392567977429056"
-            crossorigin="anonymous"></script>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({
-            google_ad_client: "ca-pub-6392567977429056",
-            enable_page_level_ads: true
-        });
-    </script>
-    
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+
+    <script src="./register-sw.js?v=20261103" defer></script>
+    <script type="module" src="./script.js?v=20261103"></script>
 </head>
 <body>
-    <!-- Floating Background Elements -->
-    <div class="floating-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-    </div>
+    <svg class="svg-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+        <symbol id="icon-mark" viewBox="0 0 32 32">
+            <rect width="32" height="32" rx="7" fill="currentColor"></rect>
+            <path d="M8 16h6M11 13l3 3-3 3M24 16h-6M21 13l-3 3 3 3" fill="none" stroke="var(--accent-ink)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </symbol>
+        <symbol id="icon-upload" viewBox="0 0 24 24">
+            <path d="M12 16V4M8 8l4-4 4 4M5 16v3a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3"></path>
+        </symbol>
+        <symbol id="icon-download" viewBox="0 0 24 24">
+            <path d="M12 4v12M8 12l4 4 4-4M5 20h14"></path>
+        </symbol>
+        <symbol id="icon-eye" viewBox="0 0 24 24">
+            <path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"></path>
+            <circle cx="12" cy="12" r="2.6"></circle>
+        </symbol>
+        <symbol id="icon-trash" viewBox="0 0 24 24">
+            <path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v5M14 11v5"></path>
+        </symbol>
+        <symbol id="icon-plus" viewBox="0 0 24 24">
+            <path d="M12 5v14M5 12h14"></path>
+        </symbol>
+        <symbol id="icon-x" viewBox="0 0 24 24">
+            <path d="M6 6l12 12M18 6L6 18"></path>
+        </symbol>
+        <symbol id="icon-lock" viewBox="0 0 24 24">
+            <rect x="5" y="10" width="14" height="10" rx="2"></rect>
+            <path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
+        </symbol>
+        <symbol id="icon-shield" viewBox="0 0 24 24">
+            <path d="M12 3l7 3v5.5c0 4.4-2.9 7.7-7 9.5-4.1-1.8-7-5.1-7-9.5V6l7-3Z"></path>
+            <path d="M9 12l2 2 4-4"></path>
+        </symbol>
+        <symbol id="icon-expand" viewBox="0 0 24 24">
+            <path d="M9 4H4v5M15 4h5v5M9 20H4v-5M20 15v5h-5M4 4l5 5M20 4l-5 5M4 20l5-5M20 20l-5-5"></path>
+        </symbol>
+        <symbol id="icon-check" viewBox="0 0 24 24">
+            <path d="M5 12l4 4L19 6"></path>
+        </symbol>
+        <symbol id="icon-alert" viewBox="0 0 24 24">
+            <path d="M12 3l9 17H3L12 3Z"></path>
+            <path d="M12 9v5M12 17h.01"></path>
+        </symbol>
+    </svg>
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 glass-container border-0 rounded-none">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-4">
-                    <div class="w-10 h-10 bg-gradient-to-r from-purple-400 to-pink-400 rounded-xl flex items-center justify-center">
-                        <i class="fas fa-compress text-white"></i>
-                    </div>
-                    <h1 class="text-2xl font-bold text-glow">PixelShrink</h1>
-                </div>
-                <div class="flex items-center space-x-6">
-                    <button class="text-white/80 hover:text-white transition-colors">
-                        <i class="fas fa-moon text-xl"></i>
-                    </button>
-                    <a href="privacy.html" class="text-white/80 hover:text-white transition-colors">
-                        Privacy
-                    </a>
-                </div>
-            </div>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+        <div class="wrap header-inner">
+            <a class="brand" href="./" aria-label="PixelShrink home">
+                <svg class="brand-mark" aria-hidden="true" focusable="false"><use href="#icon-mark"></use></svg>
+                <span>PixelShrink</span>
+            </a>
+            <nav class="site-nav" aria-label="Primary">
+                <a href="#how-it-works">How it works</a>
+                <a href="./privacy.html">Privacy</a>
+                <a href="https://github.com/sandeshwar/image-compressor" target="_blank" rel="noopener noreferrer">Source</a>
+            </nav>
         </div>
-    </nav>
+    </header>
 
-    <!-- Main Content -->
-    <main class="pt-24 pb-12">
-        <div class="container mx-auto px-6">
-            
-            <!-- Hero Section -->
-            <section class="text-center mb-16 animate-slide-in-from-top">
-                <div class="mb-8">
-                    <h2 class="text-6xl font-bold text-glow mb-6">
-                        Compress Images<br>
-                        <span class="text-gradient">Like Magic</span>
-                    </h2>
-                    <p class="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-                        Revolutionary compression technology that reduces file sizes by up to 90% while maintaining stunning visual quality. 
-                        All processing happens instantly in your browser with complete privacy.
+    <main id="main">
+        <section class="hero wrap" aria-labelledby="hero-title">
+            <p class="eyebrow">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-lock"></use></svg>
+                Private by design
+            </p>
+            <h1 id="hero-title">Compress images without uploading them.</h1>
+            <p class="lede">PixelShrink runs entirely in your browser. Your files stay on your device, and there is no account, upload, or file limit.</p>
+            <ul class="trust-list" aria-label="Privacy and product promises">
+                <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-lock"></use></svg> On-device processing</li>
+                <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-shield"></use></svg> No tracking</li>
+                <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-expand"></use></svg> Unlimited</li>
+                <li><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-check"></use></svg> Free forever</li>
+            </ul>
+        </section>
+
+        <section class="tool wrap" aria-labelledby="tool-heading">
+            <h2 id="tool-heading" class="visually-hidden">Image compressor</h2>
+
+            <button type="button" id="dropzone" class="dropzone" aria-describedby="formats-note">
+                <span class="dropzone-icon" aria-hidden="true">
+                    <svg class="icon" focusable="false"><use href="#icon-upload"></use></svg>
+                </span>
+                <span id="dropzone-title" class="dropzone-title">Drop images here</span>
+                <span class="dropzone-sub">or <span class="text-link">browse files</span></span>
+                <span id="formats-note" class="dropzone-note">JPEG, PNG, WebP, and GIF. GIFs use the first frame. You can also paste an image.</span>
+            </button>
+            <input id="file-input" type="file" accept="image/jpeg,image/png,image/webp,image/gif" multiple hidden>
+
+            <p class="local-note">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-lock"></use></svg>
+                Everything runs in this tab. Nothing is uploaded.
+            </p>
+
+            <noscript>
+                <p class="noscript">PixelShrink needs JavaScript because compression runs in your browser. Your images still never leave your device.</p>
+            </noscript>
+
+            <p id="status" class="status" role="status" aria-live="polite"></p>
+
+            <div id="workspace" class="workspace" hidden>
+                <aside class="panel settings" aria-labelledby="settings-heading">
+                    <div class="panel-head">
+                        <h2 id="settings-heading">Settings</h2>
+                        <p class="panel-sub">Applied to every image.</p>
+                    </div>
+
+                    <fieldset id="settings-fieldset" class="settings-fieldset">
+                        <legend class="visually-hidden">Compression settings</legend>
+
+                        <div class="field">
+                            <div class="field-label">
+                                <label for="quality">Quality</label>
+                                <output id="quality-value" for="quality">80%</output>
+                            </div>
+                            <input id="quality" type="range" min="10" max="100" step="1" value="80" aria-describedby="quality-hint">
+                            <p id="quality-hint" class="hint">Lower quality makes smaller files. Applies to JPEG and WebP.</p>
+                        </div>
+
+                        <div class="field">
+                            <label for="format">Output format</label>
+                            <select id="format" aria-describedby="format-hint">
+                                <option value="auto" selected>Same as source</option>
+                                <option value="image/jpeg">JPEG</option>
+                                <option value="image/png">PNG</option>
+                                <option value="image/webp">WebP</option>
+                            </select>
+                            <p id="format-hint" class="hint">Keeps the source format. GIFs are saved as PNG. Transparency is preserved unless you choose JPEG.</p>
+                        </div>
+
+                        <div class="field">
+                            <label for="resize">Size</label>
+                            <select id="resize" aria-describedby="resize-hint">
+                                <option value="original" selected>Original</option>
+                                <option value="75">75% of original</option>
+                                <option value="50">50% of original</option>
+                                <option value="custom">Custom…</option>
+                            </select>
+                            <div id="custom-size" class="custom-size" hidden>
+                                <div>
+                                    <label for="custom-width">Width</label>
+                                    <input id="custom-width" type="number" min="1" max="16384" step="1" inputmode="numeric" placeholder="Auto">
+                                </div>
+                                <div>
+                                    <label for="custom-height">Height</label>
+                                    <input id="custom-height" type="number" min="1" max="16384" step="1" inputmode="numeric" placeholder="Auto">
+                                </div>
+                            </div>
+                            <p id="resize-hint" class="hint">Leave one field blank to scale from the other. Images are never enlarged.</p>
+                        </div>
+                    </fieldset>
+
+                    <div class="settings-actions">
+                        <button id="compress-button" class="btn btn-primary" type="button" disabled>Compress images</button>
+                        <button id="cancel-button" class="btn btn-secondary" type="button" hidden>Cancel</button>
+                        <button id="clear-button" class="btn btn-ghost" type="button" disabled>Clear all</button>
+                    </div>
+
+                    <div id="progress-region" class="progress-region" hidden>
+                        <div class="progress-labels">
+                            <span id="progress-label">Compressing images…</span>
+                            <span id="progress-count" class="mono" aria-live="polite" aria-atomic="true"></span>
+                        </div>
+                        <progress id="progress" value="0" max="1" aria-label="Compression progress"></progress>
+                    </div>
+
+                    <p class="privacy-note">
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-lock"></use></svg>
+                        No uploads. No accounts. No tracking.
                     </p>
-                </div>
+                </aside>
 
-                <!-- Stats -->
-                <div class="grid grid-cols-3 gap-8 max-w-2xl mx-auto mb-12">
-                    <div class="text-center">
-                        <div class="text-3xl font-bold text-glow">90%</div>
-                        <div class="text-white/70">Size Reduction</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-3xl font-bold text-glow">100%</div>
-                        <div class="text-white/70">Privacy</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-3xl font-bold text-glow">0.5s</div>
-                        <div class="text-white/70">Processing</div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Upload Section -->
-            <section class="mb-16 animate-slide-in-from-bottom">
-                <div class="max-w-4xl mx-auto">
-                    <div id="dropZone" class="dropzone-unique">
-                        <div class="mb-8">
-                            <div class="w-24 h-24 mx-auto mb-6 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center floating">
-                                <i class="fas fa-cloud-upload-alt text-white text-4xl"></i>
-                            </div>
+                <section class="panel queue" aria-labelledby="queue-heading">
+                    <div class="panel-head queue-head">
+                        <div>
+                            <h2 id="queue-heading">Images</h2>
+                            <p id="queue-count" class="panel-sub">0 images</p>
                         </div>
-                        <h3 class="text-3xl font-bold text-white mb-4">
-                            Drop Your Images Here
-                        </h3>
-                        <p class="text-white/80 mb-8 text-lg">
-                            or click to browse from your device
-                        </p>
-                        <button class="btn-glow text-lg px-8 py-4">
-                            <i class="fas fa-folder-open mr-3"></i>
-                            Choose Images
+                        <button id="add-button" class="btn btn-secondary btn-small" type="button">
+                            <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-plus"></use></svg>
+                            Add images
                         </button>
-                        <input type="file" id="fileInput" accept="image/*" multiple class="hidden">
-                        <p class="text-white/90 mt-6 text-sm font-medium">
-                            <i class="fas fa-check-circle text-green-400 mr-2"></i>
-                            Supports: JPG, PNG, WebP, GIF • Max 10MB each • No uploads required
-                        </p>
                     </div>
-                </div>
-            </section>
 
-            <!-- Ad Space -->
-            <div class="max-w-4xl mx-auto mb-16">
-                <div class="glass-container p-6 text-center">
-                    <div class="ad-container">
-                        <ins class="adsbygoogle"
-                             style="display:block; width:100%; min-height:90px;"
-                             data-ad-client="ca-pub-6392567977429056"
-                             data-ad-slot="XXXXXXXXXX"
-                             data-ad-format="auto"
-                             data-full-width-responsive="true"></ins>
-                        <script>
-                             (adsbygoogle = window.adsbygoogle || []).push({});
-                        </script>
-                        <div class="ad-fallback">
-                            <i class="fas fa-ad text-2xl mb-2"></i>
-                            <p>Advertisement space</p>
+                    <p id="queue-notice" class="queue-notice" hidden></p>
+
+                    <div id="summary" class="summary" hidden>
+                        <div>
+                            <p id="summary-text" class="summary-text"></p>
+                            <p id="summary-sub" class="summary-sub"></p>
                         </div>
+                        <button id="download-all" class="btn btn-primary btn-small" type="button" disabled>
+                            <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-download"></use></svg>
+                            Download all (.zip)
+                        </button>
                     </div>
-                </div>
+
+                    <ul id="file-list" class="file-list" aria-label="Selected images"></ul>
+                </section>
             </div>
+        </section>
 
-            <!-- Image Preview Section -->
-            <section id="imagePreviewSection" class="hidden mb-16">
-                <div class="max-w-6xl mx-auto">
-                    <div class="glass-container p-8">
-                        <h3 class="text-2xl font-bold text-glow mb-6 text-center">
-                            <i class="fas fa-images mr-3"></i>
-                            Uploaded Images
-                        </h3>
-                        <div id="thumbnailContainer" class="flex gap-4 overflow-x-auto pb-4 scroll-smooth">
-                            <!-- Thumbnails will be inserted here -->
-                        </div>
-                    </div>
-                </div>
-            </section>
+        <section id="how-it-works" class="strip wrap" aria-labelledby="how-heading">
+            <h2 id="how-heading">How it works</h2>
+            <ol class="steps">
+                <li>
+                    <span class="step-num">01</span>
+                    <h3>Add images</h3>
+                    <p>Drop, paste, or browse. Files are read locally, never sent to a server.</p>
+                </li>
+                <li>
+                    <span class="step-num">02</span>
+                    <h3>Choose settings</h3>
+                    <p>Pick a format, quality, and size. Defaults are sensible, and originals are never modified.</p>
+                </li>
+                <li>
+                    <span class="step-num">03</span>
+                    <h3>Save the result</h3>
+                    <p>Download images individually or as one ZIP. Everything is generated on your device.</p>
+                </li>
+            </ol>
+        </section>
 
-            <!-- Compression Settings -->
-            <section id="settingsSection" class="hidden mb-16 animate-bounce-in">
-                <div class="max-w-4xl mx-auto">
-                    <div class="glass-container p-8">
-                        <h3 class="text-3xl font-bold text-glow mb-8 text-center">
-                            <i class="fas fa-sliders-h mr-3"></i>
-                            Fine-Tune Your Compression
-                        </h3>
-                        
-                        <div class="grid md:grid-cols-3 gap-8">
-                            <!-- Quality Control -->
-                            <div class="text-center">
-                                <label class="block text-white font-semibold mb-4 text-lg">
-                                    Quality Level
-                                    <span id="qualityValue" class="text-gradient font-bold ml-2">80%</span>
-                                </label>
-                                <div class="relative">
-                                    <input type="range" id="qualitySlider" min="10" max="100" value="80" 
-                                           class="w-full h-3 bg-white/20 rounded-lg appearance-none cursor-pointer">
-                                    <div class="flex justify-between text-white/70 text-sm mt-3 font-medium">
-                                        <span>Smallest</span>
-                                        <span>Best Quality</span>
-                                    </div>
-                                </div>
-                            </div>
+        <section class="faq wrap" aria-labelledby="faq-heading">
+            <h2 id="faq-heading">Questions</h2>
 
-                            <!-- Resize Control -->
-                            <div class="text-center">
-                                <label class="block text-white font-semibold mb-4 text-lg">
-                                    Image Size
-                                </label>
-                                <select id="resizeSelect" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:border-white/40 transition-all">
-                                    <option value="original">Original Size</option>
-                                    <option value="50">50% Smaller</option>
-                                    <option value="75">25% Smaller</option>
-                                    <option value="custom">Custom Size</option>
-                                </select>
-                            </div>
+            <details>
+                <summary>Are my images uploaded?</summary>
+                <p>No. PixelShrink reads files with the browser's File API, draws them to a local canvas, and saves the result in memory. There is no upload endpoint, no account, and no third-party script. The page's Content Security Policy also blocks outbound connections.</p>
+            </details>
 
-                            <!-- Format Control -->
-                            <div class="text-center">
-                                <label class="block text-white font-semibold mb-4 text-lg">
-                                    Output Format
-                                </label>
-                                <select id="formatSelect" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:border-white/40 transition-all">
-                                    <option value="original">Same as Original</option>
-                                    <option value="jpeg">JPEG (Smaller)</option>
-                                    <option value="png">PNG (Higher Quality)</option>
-                                    <option value="webp">WebP (Modern)</option>
-                                </select>
-                                <p class="text-white/60 text-xs mt-2">
-                                    <i class="fas fa-info-circle mr-1"></i>
-                                    PNG may be larger but preserves quality
-                                </p>
-                            </div>
-                        </div>
+            <details>
+                <summary>Is there a file limit?</summary>
+                <p>No file-count limit and no artificial file-size limit. The only constraints are your device's memory and the browser's canvas limits. Very large images are scaled down automatically when a canvas would be too big; the result's dimensions are shown in the queue.</p>
+            </details>
 
-                        <!-- Custom Size Inputs -->
-                        <div id="customSizeSection" class="hidden mt-8 p-6 bg-white/5 rounded-xl border border-white/10">
-                            <div class="grid grid-cols-2 gap-6">
-                                <div>
-                                    <label class="block text-white font-semibold mb-3">Width (px)</label>
-                                    <input type="number" id="customWidth" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-white/40 transition-all" placeholder="Auto">
-                                </div>
-                                <div>
-                                    <label class="block text-white font-semibold mb-3">Height (px)</label>
-                                    <input type="number" id="customHeight" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-white/40 transition-all" placeholder="Auto">
-                                </div>
-                            </div>
-                        </div>
+            <details>
+                <summary>What happens to GIFs and transparent images?</summary>
+                <p>GIF input uses the first frame and is saved as PNG by default. Transparency is preserved for PNG, WebP, and GIF input. If you choose JPEG, transparent areas are filled with white because JPEG does not support transparency.</p>
+            </details>
 
-                        <!-- Action Buttons -->
-                        <div class="flex justify-center space-x-6 mt-10">
-                            <button id="compressBtn" class="btn-glow text-lg px-10 py-4">
-                                <i class="fas fa-magic mr-3"></i>
-                                Compress Now
-                            </button>
-                            <button id="resetBtn" class="px-10 py-4 bg-white/10 border border-white/20 text-white rounded-xl font-semibold hover:bg-white/20 transition-all duration-300">
-                                <i class="fas fa-redo mr-3"></i>
-                                Reset
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <details>
+                <summary>What if the compressed file is larger?</summary>
+                <p>PixelShrink compares the encoded result with the original. If no resize or format change was requested and the result would be larger, it keeps the original bytes instead of making the file worse. That row is marked “original kept”.</p>
+            </details>
 
-            <!-- Results Section -->
-            <section id="resultsSection" class="hidden animate-bounce-in">
-                <div class="max-w-6xl mx-auto">
-                    <div class="glass-container p-8">
-                        <h3 class="text-3xl font-bold text-glow mb-8 text-center">
-                            <i class="fas fa-check-circle mr-3 text-green-400"></i>
-                            Compression Complete!
-                        </h3>
-                        
-                        <!-- Progress Indicator -->
-                        <div id="progressContainer" class="hidden mb-8">
-                            <div class="flex items-center justify-between mb-3">
-                                <span class="text-white font-medium">Processing images...</span>
-                                <span id="progressText" class="text-gradient font-bold">0%</span>
-                            </div>
-                            <div class="progress-unique">
-                                <div id="progressFill" class="progress-fill-unique" style="width: 0%"></div>
-                            </div>
-                        </div>
-                        
-                        <div id="imageGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            <!-- Image cards will be inserted here -->
-                        </div>
+            <details>
+                <summary>Does it work offline?</summary>
+                <p>Yes, after the first visit. A service worker caches the app itself, so compression can run without a network. The service worker only stores this site's files; it never caches or transmits your images.</p>
+            </details>
 
-                        <!-- Download All Button -->
-                        <div class="flex justify-center mt-12">
-                            <button id="downloadAllBtn" class="btn-glow text-lg px-10 py-4">
-                                <i class="fas fa-download mr-3"></i>
-                                Download All Images
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Ad Space Bottom -->
-            <div class="max-w-4xl mx-auto mt-16">
-                <div class="glass-container p-6 text-center">
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-                         data-ad-slot="XXXXXXXXXX"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                </div>
-            </div>
-
-        </div>
+            <details>
+                <summary>Is it really free?</summary>
+                <p>Yes. No ads, no accounts, no tracking, and no paid tier. The code is MIT licensed and the source is on GitHub. If you find a bug, open an issue.</p>
+            </details>
+        </section>
     </main>
 
-    <!-- Image Preview Modal -->
-    <div id="imageModal" class="fixed inset-0 z-50 hidden">
-        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="imageCompressor.closeModal()"></div>
-        <div class="absolute inset-0 flex items-center justify-center p-4">
-            <div class="glass-container max-w-6xl max-h-[90vh] overflow-auto">
-                <div class="p-6">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-2xl font-bold text-glow">
-                            <i class="fas fa-image mr-3"></i>
-                            <span id="modalTitle">Image Preview</span>
-                        </h3>
-                        <button onclick="imageCompressor.closeModal()" class="text-white/80 hover:text-white transition-colors">
-                            <i class="fas fa-times text-2xl"></i>
-                        </button>
-                    </div>
-                    <div class="text-center">
-                        <img id="modalImage" src="" alt="Preview" class="max-w-full max-h-[60vh] object-contain rounded-lg mx-auto">
-                        <div id="modalInfo" class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
-                            <!-- Modal info will be inserted here -->
-                        </div>
-                        <div class="mt-6 flex justify-center space-x-4">
-                            <button id="modalDownloadBtn" class="btn-glow">
-                                <i class="fas fa-download mr-2"></i>
-                                Download
-                            </button>
-                            <button onclick="imageCompressor.closeModal()" class="px-6 py-3 bg-white/10 border border-white/20 text-white rounded-xl font-semibold hover:bg-white/20 transition-all">
-                                <i class="fas fa-eye-slash mr-2"></i>
-                                Close Preview
-                            </button>
-                        </div>
-                    </div>
-                </div>
+    <footer class="site-footer">
+        <div class="wrap footer-inner">
+            <div>
+                <a class="brand brand-small" href="./" aria-label="PixelShrink home">
+                    <svg class="brand-mark" aria-hidden="true" focusable="false"><use href="#icon-mark"></use></svg>
+                    <span>PixelShrink</span>
+                </a>
+                <p class="footer-note">Local image compression. No uploads. No analytics. No ads.</p>
             </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="glass-container border-0 rounded-none">
-        <div class="container mx-auto px-6 py-8">
-            <div class="text-center text-white/80">
-                <p class="mb-4">Privacy First Image Compression. 2025 PixelShrink.</p>
-                <div class="flex justify-center space-x-6">
-                    <a href="https://compress-image.uk/privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
-                    <span class="text-white/40">|</span>
-                    <a href="https://compress-image.uk/#features" class="hover:text-white transition-colors">Features</a>
-                    <span class="text-white/40">|</span>
-                    <a href="https://compress-image.uk/" class="hover:text-white transition-colors">Home</a>
-                </div>
-                <div class="mt-4 text-white/60 text-sm">
-                    🏠 <a href="https://compress-image.uk" class="hover:text-white transition-colors">compress-image.uk</a>
-                </div>
-            </div>
+            <nav class="footer-links" aria-label="Footer">
+                <a href="./privacy.html">Privacy</a>
+                <a href="https://github.com/sandeshwar/image-compressor" target="_blank" rel="noopener noreferrer">Source code</a>
+                <a href="https://github.com/sandeshwar/image-compressor/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT license</a>
+            </nav>
+            <p class="footer-copy">© 2026 PixelShrink</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <dialog id="preview-dialog" class="dialog" aria-labelledby="preview-title">
+        <div class="dialog-head">
+            <h2 id="preview-title" class="dialog-title">Preview</h2>
+            <button type="button" class="icon-btn" data-close aria-label="Close preview" title="Close preview">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-x"></use></svg>
+            </button>
+        </div>
+        <div class="dialog-body">
+            <div class="preview-frame">
+                <img id="preview-image" alt="" width="1200" height="800" decoding="async">
+            </div>
+            <p id="preview-meta" class="preview-meta"></p>
+            <p id="preview-note" class="hint" hidden></p>
+        </div>
+        <div class="dialog-foot">
+            <button id="preview-download" class="btn btn-primary" type="button">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-download"></use></svg>
+                Download
+            </button>
+            <button class="btn btn-secondary" type="button" data-close>Close</button>
+        </div>
+    </dialog>
+
+    <template id="file-row-template">
+        <li class="file-row">
+            <div class="file-thumb">
+                <img alt="" width="48" height="48" loading="lazy" decoding="async">
+                <span class="file-thumb-placeholder" hidden>
+                    <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-alert"></use></svg>
+                </span>
+            </div>
+            <div class="file-main">
+                <div class="file-name-line">
+                    <p class="file-name"></p>
+                    <span class="file-status">Queued</span>
+                </div>
+                <p class="file-meta"></p>
+                <p class="file-error" hidden></p>
+            </div>
+            <div class="file-stats">
+                <p class="file-size"><span class="file-original"></span> <span aria-hidden="true">→</span> <span class="file-result">—</span></p>
+                <p class="file-saving"></p>
+            </div>
+            <div class="file-actions">
+                <button type="button" class="icon-btn" data-action="preview" aria-label="Preview" title="Preview" disabled>
+                    <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-eye"></use></svg>
+                </button>
+                <button type="button" class="icon-btn" data-action="download" aria-label="Download" title="Download" disabled>
+                    <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-download"></use></svg>
+                </button>
+                <button type="button" class="icon-btn icon-btn-danger" data-action="remove" aria-label="Remove" title="Remove">
+                    <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-trash"></use></svg>
+                </button>
+            </div>
+        </li>
+    </template>
 </body>
 </html>

@@ -1,0 +1,23 @@
+{
+  "name": "pixelshrink",
+  "version": "2.0.0",
+  "private": true,
+  "description": "A local-first, privacy-focused image compressor that runs entirely in the browser.",
+  "type": "module",
+  "license": "MIT",
+  "homepage": "https://compress-image.uk",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sandeshwar/image-compressor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sandeshwar/image-compressor/issues"
+  },
+  "scripts": {
+    "test": "node --check lib.js && node --check script.js && node --check secure.js && node --check register-sw.js && node --check sw.js && node --test test/lib.test.js test/site.test.js",
+    "serve": "python3 -m http.server 8080"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
